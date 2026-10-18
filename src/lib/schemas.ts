@@ -7,6 +7,12 @@ export const SiteSchema = z.object({
   wordmark: z.string().min(1),
   tagline: z.string().min(1),
   siteUrl: z.union([z.literal(''), z.url()]),
+  assets: z.object({
+    logoMark: z.string().startsWith('/'),
+    faviconSvg: z.string().startsWith('/'),
+    faviconPng: z.string().startsWith('/'),
+    appleTouchIcon: z.string().startsWith('/'),
+  }),
   hero: z.object({
     eyebrow: z.string().min(1),
     headlineLineOne: z.string().min(1),

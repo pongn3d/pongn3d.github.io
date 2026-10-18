@@ -1,0 +1,36 @@
+---
+interface Props {
+  projectNumber: string;
+  role: string;
+  tools: string[];
+  dates: string;
+  results?: (string | number)[];
+}
+
+const { projectNumber, role, tools, dates, results = [] } = Astro.props;
+---
+<section class="project-title-block" aria-label="Project title block">
+  <dl class="project-title-block__fields">
+    <div class="project-title-block__field project-title-block__field--number">
+      <dt>Project no.</dt>
+      <dd>{projectNumber}</dd>
+    </div>
+    <div class="project-title-block__field">
+      <dt>Role</dt>
+      <dd>{role}</dd>
+    </div>
+    <div class="project-title-block__field">
+      <dt>Tools</dt>
+      <dd>{tools.length ? tools.join(' · ') : '[TODO: add tools]'}</dd>
+    </div>
+    <div class="project-title-block__field">
+      <dt>Dates</dt>
+      <dd>{dates}</dd>
+    </div>
+  </dl>
+  {results.length > 0 && (
+    <p class="project-title-block__spec" aria-label={`Key results: ${results.join('; ')}`}>
+      {results.map((result) => String(result).replace(/\s+(?:displacement|force|linear accuracy|rotational accuracy|linear velocity)$/i, '')).join(' · ')}
+    </p>
+  )}
+</section>

@@ -2,59 +2,62 @@
 
 ## Scope and build sequence
 
-Follow `/home/ubuntu/upload/portfolio-prompt.md` as the factual source of truth. It contains **16 projects**, of which six are featured, five experience roles and four competition/achievement entries. No additional project should be invented. Missing personal text, resume PDF and all project media remain visible, filename-specific TODO placeholders. Never display a phone number.
+Follow `/home/ubuntu/upload/portfolio-prompt.md` as the factual source of truth. The project inventory is **exactly 16 projects**, six featured, five experience roles and four competition/achievement entries. Robocon, hackathon and Jinpao appearances are achievement/experience entries that link to existing projects, not separate project records. No additional project should be invented. Missing personal text, resume PDF and all project media remain visible, filename-specific TODO placeholders. Never display a phone number.
 
-The first deliverable is the homepage for review before the rest of the site is built. Show it in both desktop and a 390px-wide mobile preview. It includes the design system, shared navigation and footer, real-time Three.js hero, quiet credentials strip and six featured-project previews. Content foundations needed by the homepage will be created now, but Work, project detail pages and supporting pages will be built only after the homepage is shown. The complete later deliverable includes Work grid/archive views with category/tag filters, every project detail page, Experience timeline, Competitions & Achievements, About, Resume and Contact. Resume stays a TODO until a real PDF is supplied.
+The current user-approved stage is to revise the homepage's design and details, prepare a reusable CAD-style title-block component, and show fresh desktop and 390px-wide mobile previews. Stop at those previews and do not build other pages until the user reviews them. The larger site scope remains Work grid/archive with category/tag filters, all 16 project details, Experience timeline, Competitions & Achievements, About, Resume and Contact. The existing first-stage data contains only the six featured records; later pages remain unbuilt.
 
 ## Implementation approach
 
-Use **Astro, TypeScript and plain CSS**, with a small, dynamically imported Three.js module for the hero. Generate content-bearing static HTML rather than a client-only shell. No server or database is required. The configured development service listens on `0.0.0.0:3000`; the self-hostable production output is `dist/`. Manus preview is only an optional development convenience: the production output must not call Manus APIs or require Manus storage or hosting.
+Use **Astro, TypeScript and plain CSS**, with a small dynamically imported Three.js module for the hero. Generate content-bearing static HTML; no server or database is required. Keep the configured development service on `0.0.0.0:3000`; production output is `dist/`. The site must not call Manus APIs or require Manus storage/hosting.
 
-Use Markdown plus frontmatter for projects, experience, achievements and About; JSON for site settings and taxonomy. A central Zod-validated loader reads these files, checks required fields, validates categories/tags and slug relationships, excludes `_template`, and drives featured ordering, archive sorting and related-project lists automatically. Editorial text and labels also live in site settings rather than being embedded in components. The site settings expose a single `hero.modelPath` field for future GLB replacement.
+Self-host **Space Grotesk** weights 400 and 500 for headings and body, plus **JetBrains Mono** for labels, dates, categories, numbers, tags and engineering specs. Include each font's license. Keep family choices in CSS custom properties. The warm ivory/brown/terracotta palette, layout, facts and hero sculpture remain; make “life.” upright and terracotta. Add restrained numbered mono labels, thin project-image crop marks, a very faint dot grid behind the hero only, and mono result-spec lines from supplied numeric results. Prepare a reusable title-block component for project pages with role, tools, dates and project number.
 
-Install Astro, Three.js, Zod, a frontmatter parser and Sharp. Pin pnpm and record lifecycle permissions before installation. Self-host only the requested weight-400 DM Sans and Instrument Serif normal/real-italic font assets with their licenses. Uploaded originals stay with each project; media processing creates responsive WebP outputs during the build and preserves explicit placeholders when files do not exist. Local videos use muted/looping/playsinline playback with posters and preload metadata only; external video embeds are click-to-load.
+Replace the spark with Pongnapat's supplied P mark. Store the transparent mark and favicon as standalone SVG files; reference their paths from `content/site.json`, and use the mark file from the shared wordmark and image generator instead of duplicating SVG path data in components. A local asset-generation script reads those sources and creates `favicon-32.png`, a 180px Apple touch icon and the Open Graph PNG. Document regeneration in README. Use only the logo SVG supplied in the attachment; don't replace it with generated or stock artwork.
 
-Generate per-page titles and descriptions, an original typography/brand Open Graph image, a spark favicon and a complete route manifest. Do not guess a public canonical URL: expose `siteUrl` in settings and omit origin-dependent tags until configured. Make source portable to Vercel, Netlify and GitHub Pages, with deployment and media/content-editing instructions in a plain-language README. Hand off a real Git repository that the user can push to their GitHub; do not push to an unprovided repository.
+Use Markdown plus frontmatter for projects, experience, achievements and About; JSON for site settings and taxonomy. A central Zod-validated loader reads content, checks required fields, categories/tags and slug relationships, excludes `_template`, and drives featured ordering, archive sorting and related-project lists automatically. Site settings hold editable copy, navigation, assets/contact, and the hero model path. Existing project data remains factual; result specs show only provided measurements (for example `44.2 mm · 0.57 N` and `0.2 mm · 0.5° · 600 mm/s`).
+
+Install/update the pinned local font packages before copying their WOFF2 assets to `public/fonts/`; retain upstream OFL licenses and source attribution. Use the existing `sharp` dependency to generate icons and OG artwork in a deterministic script invoked during dev start and static build. Uploaded future project photos remain local content; media conversion, archive and related-content behavior belong to later phases.
+
+Keep route-specific titles/descriptions, the existing route manifest and locally generated OG image. Do not guess a canonical origin; expose `siteUrl` in settings and omit origin-dependent metadata until configured. Keep source portable to Vercel, Netlify and GitHub Pages. The Git repository and bundle remain pushable to a GitHub repository chosen by the user; do not push to an unprovided GitHub account/repository.
 
 ## Project structure
 
-- `content/site.json`: identity, all editable interface copy, hero copy/settings/model path, credentials, navigation, footer and contacts.
+- `content/site.json`: identity, editable interface copy, font-independent site settings, asset paths, hero copy/model path, credentials, navigation, footer and contact details.
 - `content/taxonomy.json`: primary categories and supported tags.
-- `content/projects/<slug>/index.md`: project frontmatter and narrative; media in the same folder. `_template/index.md` is documented and excluded.
-- `content/experience/<slug>.md` and `content/achievements/<slug>.md`: schema-checked role/award entries and narrative.
-- `content/about.md`: biography TODO, education, grouped skills, languages and scores.
-- `src/lib/content.ts` and `src/lib/schemas.ts`: validation, sorting, slug relationships and content helpers.
+- `content/projects/<slug>/index.md`: project frontmatter/narrative and media; `_template/index.md` is documented and excluded.
+- `content/experience/<slug>.md`, `content/achievements/<slug>.md`, `content/about.md`: schema-checked roles, awards and profile material in later phases.
+- `src/lib/content.ts` and `src/lib/schemas.ts`: validation, sorting, relationships and content helpers.
 - `src/layouts/BaseLayout.astro`: semantic page shell, metadata and shared navigation/footer.
-- `src/components/`: wordmark, hero, project previews, neutral filename placeholders and later gallery/filter controls.
-- `src/scripts/sculpture.ts`: lazily loaded Three.js sculpture or configured GLB model, pointer/spin controls, reduced-motion behavior and cleanup.
-- `src/pages/`: homepage first; later Work, static project routes, Experience, Achievements, About, Resume, Contact and 404.
-- `src/styles/global.css`: visual system, responsive layouts and accessible interaction states.
-- `public/fonts/`, `public/favicon.svg`, `public/og-image.png`, `public/manus-routes.json`: durable self-hosted assets and route declarations.
-- `scripts/`: reusable content/media checks and responsive media preparation.
-- `README.md`, `TODO.md`, `plan.md`: editing/hosting documentation, deliverable criteria and implementation decisions.
+- `src/components/`: shared wordmark, hero, featured cards, neutral placeholders and reusable `ProjectTitleBlock.astro`.
+- `src/scripts/sculpture.ts`: lazy Three.js sculpture or configured GLB model, pointer/spin controls and reduced-motion behavior.
+- `src/pages/`: homepage now; later Work, 16 static project routes, Experience, Achievements, About, Resume, Contact and 404.
+- `src/styles/global.css`: CSS design tokens, responsive layouts, CAD-like details and accessible interaction states.
+- `public/fonts/`, `public/favicon.svg`, `public/logo-mark.svg`, `public/og-image.svg`, `public/manus-routes.json`: self-hosted source assets and route declaration; generated PNG files are reproducible.
+- `scripts/`: deterministic favicon/OG generation now; content/media preparation in later phases.
+- `README.md`, `TODO.md`, `plan.md`: local setup/asset regeneration/deployment instructions, outcome criteria and implementation decisions.
 
 ## Design
 
-**Design movement:** warm editorial creative-studio design, exactly as specified in the brief.
+**Design movement:** engineering editorial, combining the brief's warm creative-studio restraint with subtle CAD-drawing conventions.
 
-**Core principles:** make the person and real work primary; use spacious typographic hierarchy rather than template cards; let restrained mechanical playfulness appear through the spark and sculpture; keep missing content honest and editable.
+**Core principles:** keep the person and real work primary; use clear technical hierarchy rather than decorative panels; limit engineering cues to useful labels, crop marks and measurements; keep missing content honest and editable.
 
-**Color philosophy:** ivory `#f5f1e9` provides a calm paper-like field; dark brown `#542f28` supplies readable warmth; muted brown `#8b7566` supports secondary details; terracotta `#e17145` and deep terracotta `#b66143` add a human accent. Thin `#dcd3c6` rules organize content. Use a deeper companion tint for small muted/accent text where needed so small labels remain readable.
+**Color philosophy:** ivory `#f5f1e9` remains the calm paper-like field; dark brown `#542f28` carries readable text; muted brown `#8b7566` supports secondary details; terracotta `#e17145` and deep terracotta `#b66143` add an ownable human accent. Thin `#dcd3c6` rules organize the page. The engineering details stay low-contrast and sparse, never a dense interface texture.
 
-**Layout paradigm:** a wide, asymmetrical two-column hero with large left-aligned text and a generous right-hand sculpture stage. A quiet horizontal credentials line leads into six airy featured previews. Keep navigation lightweight, secondary content editorial and the footer spacious. On small screens, stack text and the sculpture without horizontal overflow.
+**Layout paradigm:** retain the asymmetrical two-column hero with large left-aligned text and a spacious right-hand sculpture stage. A credentials rule leads into six airy project previews. Crop-mark frames and small mono specs make cards feel documented rather than boxed. On mobile, stack text and sculpture, keep Contact visible, use 3:2 project covers and prevent horizontal overflow.
 
-**Signature elements:** an eight-armed four-line spark; real italic terracotta accent words; the inflated orange six-lobed form with two orbiting pearls. Neutral media placeholders show expected filenames and are never presented as actual project documentation.
+**Signature elements:** the supplied P mark next to lowercase `pongnapat.` with a terracotta period; a faint hero-only dot grid and corner crop marks; the inflated orange six-lobed form with two orbiting pearls.
 
-**Interaction philosophy:** familiar semantic links, visibly focused buttons and keyboard-usable controls. The hero spin pill is a real button. Desktop mouse dragging rotates the object; touch gestures remain page-scrollable. Later Work controls update the grid/archive and expose result counts without losing accessibility.
+**Interaction philosophy:** semantic links, visible focus, keyboard-usable controls and familiar navigation. The spin pill remains a real button. Desktop fine pointers may drag; touch remains page-scrollable and gets no “desktop drag” hint. Later Work controls update grid/archive and expose result counts accessibly.
 
-**Animation:** the sculpture floats and slowly rotates, with gentle orbiting cream/wine pearls and a soft blurred CSS shadow. Use only restrained hover lifts and scroll fades. Reduced motion yields a still pose and suppresses animated transitions/spins. If WebGL cannot initialize, show a static original silhouette instead.
+**Animation:** preserve slow sculpture float/rotation and pearl orbits with a soft blurred CSS shadow; use only restrained hover lifts and scroll fades. Reduced motion yields a still pose and suppresses animated transitions/spins. WebGL failure shows the static original silhouette.
 
-**Typography system:** self-hosted Instrument Serif weight 400 normal and real italic for expressive headings; DM Sans weight 400 for body and labels. Never synthesize bold or italic. Display scale responds to viewport width; uppercase labels have restrained tracking and stay in the requested 9–11px range when legible.
+**Typography system:** self-hosted Space Grotesk weight 400 for body and 400/500 for headings. Use JetBrains Mono for labels, dates, categories, numbers, tags and results. “life.” is upright terracotta. Do not synthesize a serif italic. Small technical labels remain legible and use restrained tracking.
 
-**Brand essence:** a personal portfolio and lasting archive for a robotics student working across mechanisms, electronics, control and bio-inspired research. Personality: calm, warm, curious.
+**Brand essence:** a personal portfolio and lasting archive for a robotics student working across mechanisms, electronics, control and bio-inspired research. Personality: precise, curious, warm.
 
-**Brand voice:** clear, concise and personal, not corporate. Example lines: “Mechanisms that move. Ideas with a little life.” and “Currently — Research Intern at VISTEC.” Additional editorial phrasing must remain non-factual or explicitly TODO when missing from the brief.
+**Brand voice:** direct, concise and personal, not corporate. Example lines: “Mechanisms that move. Ideas with a little life.” and “Currently — Research Intern at VISTEC.” Additional editorial phrasing must remain non-factual or explicitly TODO when missing from the brief.
 
-**Wordmark and logo:** four crossing thin strokes form the eight-armed spark beside a lowercase `pongnapat.` wordmark, with the period in terracotta. Use the spark alone as the favicon and platform logo.
+**Wordmark and logo:** lowercase `pongnapat.` with terracotta punctuation and the user's transparent P mark; source SVGs are replaceable files whose paths are held in settings. Generate the favicon and social image from those sources with the build script.
 
 **Signature brand color:** terracotta `#e17145`; hero sculpture orange `#f36c2e` is reserved for the playful 3D object.

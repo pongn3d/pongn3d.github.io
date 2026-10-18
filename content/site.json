@@ -3,6 +3,12 @@
   "wordmark": "pongnapat.",
   "tagline": "Robotics & Automation Engineering student at KMUTT",
   "siteUrl": "",
+  "assets": {
+    "logoMark": "/logo-mark.svg",
+    "faviconSvg": "/favicon.svg",
+    "faviconPng": "/favicon-32.png",
+    "appleTouchIcon": "/apple-touch-icon.png"
+  },
   "hero": {
     "eyebrow": "ROBOTICS & AUTOMATION ENGINEERING — KMUTT",
     "headlineLineOne": "Mechanisms that move.",
@@ -32,7 +38,7 @@
   ],
   "homepage": {
     "credentialsLabel": "At a glance",
-    "featuredEyebrow": "A SMALL SELECTION · 06 PROJECTS",
+    "featuredEyebrow": "01 / A SMALL SELECTION · 06 PROJECTS",
     "featuredHeading": "Selected work",
     "featuredLink": "Browse the work",
     "featuredLinkHref": "#selected-work",
@@ -71,6 +77,6 @@
       "embedded systems",
       "soft robotics"
     ],
-    "openGraphImageAlt": "An orange six-lobed sculpture on an ivory background"
+    "openGraphImageAlt": "Pongnapat's P mark and a six-lobed orange sculpture on an ivory background"
   }
 }

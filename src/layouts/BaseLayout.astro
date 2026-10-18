@@ -27,9 +27,12 @@ const absoluteOpenGraphImage = siteBaseUrl
     <meta name="description" content={description} />
     <meta name="keywords" content={site.seo.keywords.join(', ')} />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href={assetUrl('/favicon.svg')} />
-    <link rel="preload" href={assetUrl('/fonts/DM-Sans-400.woff2')} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={assetUrl('/fonts/Instrument-Serif-400.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/svg+xml" href={assetUrl(site.assets.faviconSvg)} />
+    <link rel="icon" type="image/png" sizes="32x32" href={assetUrl(site.assets.faviconPng)} />
+    <link rel="apple-touch-icon" sizes="180x180" href={assetUrl(site.assets.appleTouchIcon)} />
+    <link rel="preload" href={assetUrl('/fonts/Space-Grotesk-400.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={assetUrl('/fonts/Space-Grotesk-500.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={assetUrl('/fonts/JetBrains-Mono-400.woff2')} as="font" type="font/woff2" crossorigin />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

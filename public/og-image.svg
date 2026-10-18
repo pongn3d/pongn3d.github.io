@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <style>
-      @font-face { font-family: 'Instrument Serif'; src: url('data:font/woff2;base64,__INSTRUMENT_FONT__') format('woff2'); font-weight: 400; font-style: normal; }
-      @font-face { font-family: 'Instrument Serif'; src: url('data:font/woff2;base64,__INSTRUMENT_ITALIC_FONT__') format('woff2'); font-weight: 400; font-style: italic; }
-      @font-face { font-family: 'DM Sans'; src: url('data:font/woff2;base64,__DM_FONT__') format('woff2'); font-weight: 400; font-style: normal; }
-      .serif { font-family: 'Instrument Serif', Georgia, serif; }
-      .sans { font-family: 'DM Sans', Arial, sans-serif; }
-      .label { font: 400 15px 'DM Sans', Arial, sans-serif; letter-spacing: 2.3px; }
+      @font-face { font-family: 'Space Grotesk'; src: url('data:font/woff2;base64,__SPACE_REGULAR_FONT__') format('woff2'); font-weight: 400; font-style: normal; }
+      @font-face { font-family: 'Space Grotesk'; src: url('data:font/woff2;base64,__SPACE_MEDIUM_FONT__') format('woff2'); font-weight: 500; font-style: normal; }
+      @font-face { font-family: 'JetBrains Mono'; src: url('data:font/woff2;base64,__MONO_REGULAR_FONT__') format('woff2'); font-weight: 400; font-style: normal; }
+      @font-face { font-family: 'JetBrains Mono'; src: url('data:font/woff2;base64,__MONO_MEDIUM_FONT__') format('woff2'); font-weight: 500; font-style: normal; }
+      .heading { font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 500; }
+      .body { font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 400; }
+      .label { font-family: 'JetBrains Mono', monospace; font-weight: 400; letter-spacing: 1.4px; }
     </style>
     <filter id="soft-shadow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="16" />
@@ -17,13 +18,10 @@
   <path d="__FLOWER_PATH__" fill="#f36c2e" />
   <circle cx="1047" cy="174" r="19" fill="#f3e6c8" />
   <circle cx="750" cy="450" r="15" fill="#572f3e" />
-  <g transform="translate(94 72)" fill="none" stroke="#542f28" stroke-linecap="round" stroke-width="2.5">
-    <path d="M24 0v48M0 24h48M7 7l34 34M41 7 7 41" />
-    <circle cx="24" cy="24" r="2.5" fill="#e17145" stroke="none" />
-  </g>
-  <text x="159" y="107" class="serif" font-size="38" fill="#542f28">pongnapat<tspan fill="#e17145">.</tspan></text>
-  <text x="99" y="246" class="label" fill="#8b7566">ROBOTICS &amp; AUTOMATION ENGINEERING — KMUTT</text>
-  <text x="96" y="339" class="serif" font-size="70" letter-spacing="-2.5" fill="#542f28">Mechanisms that move.</text>
-  <text x="96" y="420" class="serif" font-size="70" letter-spacing="-2.5" fill="#542f28">Ideas with a little <tspan font-style="italic" fill="#b66143">life.</tspan></text>
+  <text x="159" y="108" class="heading" font-size="36" fill="#542f28">pongnapat<tspan fill="#e17145">.</tspan></text>
+  <text x="99" y="245" class="label" font-size="14" fill="#8f4b34">ROBOTICS &amp; AUTOMATION ENGINEERING — KMUTT</text>
+  <text x="96" y="339" class="heading" font-size="68" letter-spacing="-2.5" fill="#542f28">Mechanisms that move.</text>
+  <text x="96" y="420" class="heading" font-size="68" letter-spacing="-2.5" fill="#542f28">Ideas with a little <tspan fill="#e17145">life.</tspan></text>
   <path d="M99 468h74" stroke="#e17145" stroke-width="2" />
+  <text x="96" y="516" class="label" font-size="12" fill="#735c4d">01 / SELECTED WORK</text>
 </svg>
