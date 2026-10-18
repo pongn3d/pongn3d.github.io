@@ -1,0 +1,61 @@
+---
+import { site } from '../lib/schemas';
+import { assetUrl } from '../lib/url';
+---
+<div
+  class="hero-art"
+  data-sculpture-root
+  data-model-path={site.hero.modelPath}
+  data-base-path={assetUrl('/')}
+  data-canvas-label={site.hero.canvasLabel}
+>
+  <div class="hero-art__fallback" data-sculpture-fallback aria-hidden="true">
+    <svg viewBox="0 0 500 500" focusable="false">
+      <path d="M250 68 C286 34 336 55 336 102 C390 82 430 119 407 168 C461 185 464 239 419 265 C460 307 437 356 384 358 C390 414 340 443 294 410 C267 460 216 460 189 412 C143 447 96 421 102 367 C47 371 20 323 62 282 C15 253 27 199 80 177 C62 125 102 85 153 105 C162 52 211 36 250 68 Z" />
+      <circle cx="382" cy="114" r="15" class="hero-art__pearl hero-art__pearl--cream" />
+      <circle cx="100" cy="329" r="12" class="hero-art__pearl hero-art__pearl--wine" />
+    </svg>
+  </div>
+  <canvas
+    class="hero-art__canvas"
+    data-sculpture-canvas
+    role="img"
+    aria-label={site.hero.canvasLabel}
+  ></canvas>
+  <div class="hero-art__shadow" aria-hidden="true"></div>
+  <button class="spin-button" type="button" data-sculpture-spin>
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path d="M16.5 9.2a6.5 6.5 0 1 1-1.7-4.4M16.5 3v4h-4" />
+    </svg>
+    <span>{site.hero.spinButtonLabel}</span>
+  </button>
+  <p class="hero-art__hint">{site.hero.dragHintLabel}</p>
+</div>
+<script>
+  const root = document.querySelector<HTMLElement>('[data-sculpture-root]');
+  if (root) {
+    const mount = async () => {
+      if (root.dataset.mounted === 'true') return;
+      root.dataset.mounted = 'true';
+      try {
+        const { mountSculpture } = await import('../scripts/sculpture');
+        mountSculpture(root);
+      } catch (error) {
+        root.dataset.webgl = 'unavailable';
+        console.warn('The 3D hero could not load; the static sculpture remains visible.', error);
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          void mount();
+        }
+      }, { rootMargin: '220px 0px' });
+      observer.observe(root);
+    } else {
+      void mount();
+    }
+  }
+</script>

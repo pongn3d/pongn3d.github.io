@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/schemas';
+import { assetUrl } from '../lib/url';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.seo.title, description = site.seo.description } = Astro.props;
+const siteBaseUrl = site.siteUrl ? `${site.siteUrl.replace(/\/+$/, '')}/` : undefined;
+const publicPath = Astro.url.pathname.replace(/^\/+/, '');
+const canonicalUrl = siteBaseUrl ? new URL(publicPath, siteBaseUrl).toString() : undefined;
+const absoluteOpenGraphImage = siteBaseUrl
+  ? new URL(site.seo.openGraphImage.replace(/^\/+/, ''), siteBaseUrl).toString()
+  : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f1e9" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={site.seo.keywords.join(', ')} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href={assetUrl('/favicon.svg')} />
+    <link rel="preload" href={assetUrl('/fonts/DM-Sans-400.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={assetUrl('/fonts/Instrument-Serif-400.woff2')} as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={site.name} />
+    {absoluteOpenGraphImage && <meta property="og:image:alt" content={site.seo.openGraphImageAlt} />}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {absoluteOpenGraphImage && <meta property="og:image" content={absoluteOpenGraphImage} />}
+    <meta name="twitter:card" content={absoluteOpenGraphImage ? 'summary_large_image' : 'summary'} />
+    {absoluteOpenGraphImage && <meta name="twitter:image" content={absoluteOpenGraphImage} />}
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{site.labels.skipToContent}</a>
+    <Navigation site={site} />
+    <slot />
+    <Footer site={site} />
+  </body>
+</html>

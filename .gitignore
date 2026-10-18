@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.netlify/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+public/og-image.png
+public/og-image.rendered.svg

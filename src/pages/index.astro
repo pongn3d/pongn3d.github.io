@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturedProjects from '../components/FeaturedProjects.astro';
+import Sculpture from '../components/Sculpture.astro';
+import { readFeaturedProjects } from '../lib/content';
+import { site } from '../lib/schemas';
+
+const featuredProjects = readFeaturedProjects();
+---
+<BaseLayout>
+  <main id="main-content">
+    <section class="hero page-wrap" id="top" aria-labelledby="hero-heading">
+      <div class="hero__copy" id="about-intro">
+        <p class="eyebrow hero__eyebrow">{site.hero.eyebrow}</p>
+        <h1 id="hero-heading">
+          <span>{site.hero.headlineLineOne}</span>
+          <span>{site.hero.headlineLineTwo} <em>{site.hero.headlineAccent}</em></span>
+        </h1>
+        <p class="hero__intro">{site.hero.intro}</p>
+        <p class="hero__current" id="currently">
+          <span class="eyebrow">{site.hero.currentlyLabel}</span>
+          <span class="hero__current-dash" aria-hidden="true">—</span>
+          <span>{site.hero.currentlyRole}</span>
+        </p>
+        <a class="hero__scroll-link" href="#selected-work">
+          <span class="hero__scroll-line" aria-hidden="true"></span>
+          <span>{site.hero.scrollLabel}</span>
+        </a>
+      </div>
+      <div class="hero__art-column">
+        <Sculpture />
+      </div>
+    </section>
+
+    <section class="credentials page-wrap" aria-label={site.homepage.credentialsLabel}>
+      <p class="eyebrow credentials__label">{site.homepage.credentialsLabel}</p>
+      <ul class="credentials__list">
+        {site.credentials.map((credential, index) => (
+          <li>
+            <span>{credential}</span>
+            {index < site.credentials.length - 1 && <span class="credentials__separator" aria-hidden="true">·</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FeaturedProjects projects={featuredProjects} site={site} />
+  </main>
+</BaseLayout>

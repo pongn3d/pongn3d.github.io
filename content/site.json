@@ -1,0 +1,76 @@
+{
+  "name": "Pongnapat Arayangkul",
+  "wordmark": "pongnapat.",
+  "tagline": "Robotics & Automation Engineering student at KMUTT",
+  "siteUrl": "",
+  "hero": {
+    "eyebrow": "ROBOTICS & AUTOMATION ENGINEERING — KMUTT",
+    "headlineLineOne": "Mechanisms that move.",
+    "headlineLineTwo": "Ideas with a little",
+    "headlineAccent": "life.",
+    "intro": "I'm Pongnapat, a robotics student at KMUTT. I work across mechanism design, embedded systems and control, with a growing focus on bio-inspired research.",
+    "currentlyLabel": "Currently",
+    "currentlyRole": "Research Intern at VISTEC",
+    "modelPath": "",
+    "canvasLabel": "Interactive six-lobed orange sculpture with two orbiting pearls",
+    "spinButtonLabel": "Give it a spin",
+    "dragHintLabel": "DRAG TO PLAY · DESKTOP",
+    "scrollLabel": "SCROLL TO EXPLORE"
+  },
+  "credentials": [
+    "KMUTT",
+    "GPA 3.66",
+    "IELTS 7.5",
+    "TOEIC 930/990",
+    "1st Place, NTU Hackathon 2026"
+  ],
+  "navigation": [
+    { "label": "Work", "href": "#selected-work" },
+    { "label": "Experience", "href": "#currently" },
+    { "label": "About", "href": "#about-intro" },
+    { "label": "Contact", "href": "mailto:pongnapat3d@gmail.com" }
+  ],
+  "homepage": {
+    "credentialsLabel": "At a glance",
+    "featuredEyebrow": "A SMALL SELECTION · 06 PROJECTS",
+    "featuredHeading": "Selected work",
+    "featuredLink": "Browse the work",
+    "featuredLinkHref": "#selected-work",
+    "imagePlaceholderPrefix": "Expected image",
+    "imagePlaceholderAlt": "Project cover placeholder"
+  },
+  "contact": {
+    "email": "pongnapat3d@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/pongnapat-ara-3d/",
+    "github": "https://github.com/TNZInw123"
+  },
+  "footer": {
+    "manifesto": "[TODO: write a short manifesto line]",
+    "copyrightName": "Pongnapat Arayangkul",
+    "backToTopLabel": "Back to top",
+    "socialLabels": {
+      "email": "Email Pongnapat",
+      "linkedin": "Pongnapat on LinkedIn",
+      "github": "Pongnapat on GitHub"
+    }
+  },
+  "labels": {
+    "skipToContent": "Skip to content",
+    "primaryNavigation": "Primary navigation",
+    "footerNavigation": "Footer navigation",
+    "socialLinks": "Social links"
+  },
+  "seo": {
+    "title": "Pongnapat Arayangkul — Robotics & Automation",
+    "description": "Pongnapat Arayangkul is a Robotics and Automation Engineering student at KMUTT working across mechanism design, embedded systems, control, and bio-inspired research.",
+    "openGraphImage": "/og-image.png",
+    "keywords": [
+      "robotics",
+      "automation engineering",
+      "mechanism design",
+      "embedded systems",
+      "soft robotics"
+    ],
+    "openGraphImageAlt": "An orange six-lobed sculpture on an ivory background"
+  }
+}
