@@ -35,7 +35,7 @@ For root-domain hosting (including Vercel or Netlify), omit `SITE_BASE` or set i
 The included `pongnapat-homepage.bundle` is a Git bundle, not a ZIP of loose files. To clone this homepage snapshot and push it to a GitHub repository you own:
 
 ```sh
-git clone pongnapat-homepage.bundle pongnapat
+git clone --branch main pongnapat-homepage.bundle pongnapat
 cd pongnapat
 git remote set-url origin https://github.com/YOUR-USER/YOUR-REPOSITORY.git
 git push -u origin main
