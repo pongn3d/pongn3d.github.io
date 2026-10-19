@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectTitleBlock from '../../components/ProjectTitleBlock.astro';
+import ProjectMedia from '../../components/ProjectMedia.astro';
+import { formatDateRange, getResponsiveMedia, readAchievements, readExperiences, readProjects, sortProjectsNewest } from '../../lib/content';
+import { site } from '../../lib/schemas';
+import { assetUrl } from '../../lib/url';
+
+const allProjects = sortProjectsNewest(readProjects().map(({ project }) => project));
+const experiences = readExperiences();
+const achievements = readAchievements();
+
+export function getStaticPaths() {
+  return readProjects().map(({ project }) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const page = site.pages.project;
+const projectIndex = allProjects.findIndex((entry) => entry.slug === project.slug);
+const projectNumber = String(projectIndex + 1).padStart(2, '0');
+const previousProject = projectIndex < allProjects.length - 1 ? allProjects[projectIndex + 1] : undefined;
+const nextProject = projectIndex > 0 ? allProjects[projectIndex - 1] : undefined;
+const linkedExperience = project.experience ? experiences.find((entry) => entry.slug === project.experience) : undefined;
+const linkedAchievement = project.achievement ? achievements.find((entry) => entry.slug === project.achievement) : undefined;
+const relatedProjects = allProjects.filter((entry) => project.relatedProjects.includes(entry.slug));
+const coverMedia = getResponsiveMedia(project.slug, project.cover);
+const socialImage = coverMedia?.variants.at(-1)?.src ?? site.seo.openGraphImage;
+---
+<BaseLayout title={project.title} description={project.summary} openGraphType="article" openGraphImage={socialImage} openGraphImageAlt={coverMedia ? project.coverAlt : site.seo.openGraphImageAlt}>
+  <main id="main-content" class="page-wrap project-detail">
+    <header class="project-detail__intro">
+      <a class="text-link project-detail__back" href={assetUrl('/work/')}>{page.allWorkLabel}<span aria-hidden="true"> ↗</span></a>
+      <p class="eyebrow project-detail__category">{project.category} <span aria-hidden="true">/</span> {project.tags.join(' · ')}</p>
+      <h1>{project.title}<span class="page-intro__period" aria-hidden="true">.</span></h1>
+      <p class="project-detail__summary">{project.summary}</p>
+      <p class="project-detail__context"><span>{page.contextLabel}</span> {project.context}</p>
+    </header>
+
+    <ProjectTitleBlock
+      projectNumber={projectNumber}
+      role={project.role}
+      tools={project.tools}
+      dates={formatDateRange(project.startDate, project.endDate)}
+      spec={project.spec}
+      site={site}
+    />
+
+    <ProjectMedia project={project} site={site} />
+
+    <div class="project-detail__body">
+      <section class="project-detail__section" aria-labelledby="project-overview-heading">
+        <p class="eyebrow">01 / {page.overviewHeading}</p>
+        <h2 id="project-overview-heading">{page.overviewHeading}</h2>
+        <p>{project.overview}</p>
+      </section>
+
+      <section class="project-detail__section" aria-labelledby="project-contributions-heading">
+        <p class="eyebrow">02 / {page.whatIDidHeading}</p>
+        <h2 id="project-contributions-heading">{page.whatIDidHeading}</h2>
+        <ul class="project-detail__bullets">
+          {project.whatIDid.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="project-detail__section" aria-labelledby="project-process-heading">
+        <p class="eyebrow">03 / {page.processHeading}</p>
+        <h2 id="project-process-heading">{page.processHeading}</h2>
+        <ul class="project-detail__bullets">
+          {project.process.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="project-detail__section project-detail__results" aria-labelledby="project-results-heading">
+        <p class="eyebrow">04 / {page.resultsHeading}</p>
+        <h2 id="project-results-heading">{page.resultsHeading}</h2>
+        {project.results.length ? (
+          <ul class="result-grid">
+            {project.results.map((result) => <li>{result}</li>)}
+          </ul>
+        ) : (
+          <p class="project-detail__no-results">{page.noResultsLabel}</p>
+        )}
+      </section>
+
+      <section class="project-detail__section" aria-labelledby="project-learning-heading">
+        <p class="eyebrow">05 / {page.learningHeading}</p>
+        <h2 id="project-learning-heading">{page.learningHeading}</h2>
+        <p class:list={['project-detail__learning', project.learning.startsWith('[TODO:') ? 'todo-placeholder' : '']}>{project.learning}</p>
+      </section>
+    </div>
+
+    {(linkedExperience || linkedAchievement || relatedProjects.length > 0) && (
+      <aside class="project-related" aria-label={page.contextLabel}>
+        {linkedExperience && <a class="project-related__link" href={assetUrl(`/experience/#${linkedExperience.slug}`)}><span>{site.pages.experience.relatedProjectsLabel}</span><strong>{linkedExperience.title}</strong></a>}
+        {linkedAchievement && <a class="project-related__link" href={assetUrl(`/achievements/#${linkedAchievement.slug}`)}><span>{site.pages.achievements.relatedProjectLabel}</span><strong>{linkedAchievement.title}</strong></a>}
+        {relatedProjects.map((entry) => <a class="project-related__link" href={assetUrl(`/projects/${entry.slug}/`)}><span>{page.relatedProjectsLabel}</span><strong>{entry.title}</strong></a>)}
+      </aside>
+    )}
+
+    <nav class="project-pagination" aria-label={page.allWorkLabel}>
+      {previousProject ? <a href={assetUrl(`/projects/${previousProject.slug}/`)}><span>{page.previousLabel}</span><strong>{previousProject.title}</strong></a> : <span></span>}
+      {nextProject ? <a class="project-pagination__next" href={assetUrl(`/projects/${nextProject.slug}/`)}><span>{page.nextLabel}</span><strong>{nextProject.title}</strong></a> : <a class="project-pagination__next" href={assetUrl('/work/')}><span>{page.allWorkLabel}</span><strong>{site.pages.work.heading}</strong></a>}
+    </nav>
+  </main>
+</BaseLayout>

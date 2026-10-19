@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { formatDateRange, readExperiences, readProjects, sortExperiencesNewest, sortProjectsNewest } from '../../lib/content';
+import { site } from '../../lib/schemas';
+import { assetUrl } from '../../lib/url';
+
+const page = site.pages.experience;
+const experiences = sortExperiencesNewest(readExperiences());
+const projects = sortProjectsNewest(readProjects().map(({ project }) => project));
+---
+<BaseLayout title={page.title} description={page.description}>
+  <main id="main-content" class="page-wrap content-page experience-page">
+    <PageHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
+    <ol class="experience-timeline" aria-label={page.heading}>
+      {experiences.map((experience, index) => {
+        const related = projects.filter((project) => project.experience === experience.slug);
+        return (
+          <li class="experience-entry" id={experience.slug}>
+            <span class="experience-entry__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <article>
+              <p class="eyebrow experience-entry__date">{formatDateRange(experience.startDate, experience.endDate)}</p>
+              <h2>{experience.title}</h2>
+              <p class="experience-entry__organization">{experience.organization}{experience.location ? ` · ${experience.location}` : ''}</p>
+              <p class="experience-entry__summary">{experience.summary}</p>
+              <ul class="experience-entry__contributions">
+                {experience.contributions.map((item) => <li>{item}</li>)}
+              </ul>
+              {experience.metrics.length > 0 && <p class="experience-entry__metrics">{experience.metrics.join(' · ')}</p>}
+              {experience.recognition.length > 0 && <p class="experience-entry__recognition">{experience.recognition.join(' · ')}</p>}
+              {related.length > 0 && (
+                <div class="related-projects">
+                  <p class="eyebrow">{page.relatedProjectsLabel}</p>
+                  <ul>{related.map((project) => <li><a href={assetUrl(`/projects/${project.slug}/`)}>{project.title}<span aria-hidden="true"> ↗</span></a></li>)}</ul>
+                </div>
+              )}
+            </article>
+          </li>
+        );
+      })}
+    </ol>
+  </main>
+</BaseLayout>

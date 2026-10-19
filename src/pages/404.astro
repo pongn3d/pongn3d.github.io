@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../lib/schemas';
+import { assetUrl } from '../lib/url';
+const page = site.pages.notFound;
+---
+<BaseLayout title={page.title} description={page.description} noindex>
+  <main id="main-content" class="page-wrap content-page not-found-page">
+    <PageHeader eyebrow={page.eyebrow} heading={page.heading} />
+    <div class="not-found-links">
+      <a class="text-link" href={assetUrl('/')}>{page.homeLabel}<span aria-hidden="true"> ↗</span></a>
+      <a class="text-link" href={assetUrl('/work/')}>{page.workLabel}<span aria-hidden="true"> ↗</span></a>
+    </div>
+  </main>
+</BaseLayout>

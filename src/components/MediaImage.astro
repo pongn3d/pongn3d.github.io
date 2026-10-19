@@ -1,0 +1,28 @@
+---
+import { assetUrl } from '../lib/url';
+import type { ResponsiveMedia } from '../lib/content';
+
+interface Props {
+  media?: ResponsiveMedia;
+  source: string;
+  alt: string;
+  placeholderLabel: string;
+  sizes?: string;
+  className?: string;
+  placeholderAlt?: string;
+}
+const { media, source, alt, placeholderLabel, sizes = '100vw', className = '', placeholderAlt = alt } = Astro.props;
+const variants = media?.variants ?? [];
+const largest = variants.at(-1);
+---
+{largest ? (
+  <picture class:list={["media-image", className]}>
+    <source type="image/webp" srcset={variants.map((variant) => `${assetUrl(variant.src)} ${variant.width}w`).join(', ')} sizes={sizes} />
+    <img src={assetUrl(largest.src)} alt={alt} width={media?.width} height={media?.height} loading="lazy" decoding="async" />
+  </picture>
+) : (
+  <div class:list={["media-placeholder", className]} role="img" aria-label={`${placeholderAlt}; expected file ${source}`}>
+    <span class="media-placeholder__label">{placeholderLabel}</span>
+    <code>{source}</code>
+  </div>
+)}

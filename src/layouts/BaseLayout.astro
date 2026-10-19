@@ -8,15 +8,38 @@ import { assetUrl } from '../lib/url';
 interface Props {
   title?: string;
   description?: string;
+  openGraphType?: 'website' | 'article';
+  openGraphImage?: string;
+  openGraphImageAlt?: string;
+  noindex?: boolean;
 }
 
-const { title = site.seo.title, description = site.seo.description } = Astro.props;
+const {
+  title = site.seo.title,
+  description = site.seo.description,
+  openGraphType = 'website',
+  openGraphImage = site.seo.openGraphImage,
+  openGraphImageAlt = site.seo.openGraphImageAlt,
+  noindex = false,
+} = Astro.props;
+const shortBrand = site.wordmark.replace(/\.$/, '').replace(/^./, (letter) => letter.toUpperCase());
+const brandedSuffix = ` — ${site.name}`;
+const titleBase = title.endsWith(brandedSuffix) ? title.slice(0, -brandedSuffix.length).trim() : title.trim();
+const titleAlreadyBranded = titleBase.toLowerCase().includes(shortBrand.toLowerCase());
+const compactSuffix = titleAlreadyBranded ? '' : ` — ${shortBrand}`;
+let seoTitle = `${titleBase}${compactSuffix}`;
+if (seoTitle.length < 30) seoTitle = `${titleBase} — ${site.seo.titleContext} | ${shortBrand}`;
+if (seoTitle.length > 60) {
+  const suffix = ` — ${shortBrand}`;
+  let shortBase = titleBase.slice(0, 60 - suffix.length - 1);
+  const lastSpace = shortBase.lastIndexOf(' ');
+  if (lastSpace > 20) shortBase = shortBase.slice(0, lastSpace);
+  seoTitle = `${shortBase.trimEnd()}…${suffix}`;
+}
 const siteBaseUrl = site.siteUrl ? `${site.siteUrl.replace(/\/+$/, '')}/` : undefined;
 const publicPath = Astro.url.pathname.replace(/^\/+/, '');
 const canonicalUrl = siteBaseUrl ? new URL(publicPath, siteBaseUrl).toString() : undefined;
-const absoluteOpenGraphImage = siteBaseUrl
-  ? new URL(site.seo.openGraphImage.replace(/^\/+/, ''), siteBaseUrl).toString()
-  : undefined;
+const absoluteOpenGraphImage = siteBaseUrl ? new URL(openGraphImage.replace(/^\/+/, ''), siteBaseUrl).toString() : undefined;
 ---
 <!doctype html>
 <html lang="en">
@@ -26,24 +49,22 @@ const absoluteOpenGraphImage = siteBaseUrl
     <meta name="theme-color" content="#f5f1e9" />
     <meta name="description" content={description} />
     <meta name="keywords" content={site.seo.keywords.join(', ')} />
-    <title>{title}</title>
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <title>{seoTitle}</title>
     <link rel="icon" type="image/svg+xml" href={assetUrl(site.assets.faviconSvg)} />
     <link rel="icon" type="image/png" sizes="32x32" href={assetUrl(site.assets.faviconPng)} />
     <link rel="apple-touch-icon" sizes="180x180" href={assetUrl(site.assets.appleTouchIcon)} />
-    <link rel="preload" href={assetUrl('/fonts/Space-Grotesk-400.woff2')} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={assetUrl('/fonts/Space-Grotesk-500.woff2')} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={assetUrl('/fonts/JetBrains-Mono-400.woff2')} as="font" type="font/woff2" crossorigin />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:type" content={openGraphType} />
+    <meta property="og:title" content={seoTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={site.name} />
-    {absoluteOpenGraphImage && <meta property="og:image:alt" content={site.seo.openGraphImageAlt} />}
+    {absoluteOpenGraphImage && <meta property="og:image" content={absoluteOpenGraphImage} />}
+    {absoluteOpenGraphImage && <meta property="og:image:alt" content={openGraphImageAlt} />}
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
-    {absoluteOpenGraphImage && <meta property="og:image" content={absoluteOpenGraphImage} />}
     <meta name="twitter:card" content={absoluteOpenGraphImage ? 'summary_large_image' : 'summary'} />
     {absoluteOpenGraphImage && <meta name="twitter:image" content={absoluteOpenGraphImage} />}
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={seoTitle} />
     <meta name="twitter:description" content={description} />
   </head>
   <body>

@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.25.0",
-  "engines": {
-    "node": ">=22"
-  },
+  "engines": { "node": ">=22" },
   "scripts": {
-    "dev": "node scripts/generate-assets.mjs && astro dev --host 0.0.0.0",
-    "build": "node scripts/generate-assets.mjs && astro build",
-    "check": "astro check",
+    "prepare:media": "node scripts/process-media.mjs",
+    "prepare:assets": "node scripts/generate-assets.mjs",
+    "dev": "pnpm run prepare:media && pnpm run prepare:assets && astro dev --host 0.0.0.0",
+    "build": "pnpm run prepare:media && pnpm run prepare:assets && astro build",
+    "check": "pnpm run prepare:media && pnpm run prepare:assets && astro check",
     "preview": "astro preview --host 0.0.0.0 --port 3000"
   },
   "dependencies": {

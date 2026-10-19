@@ -1,36 +1,36 @@
 ---
+import type { SiteSettings } from '../lib/schemas';
+
 interface Props {
   projectNumber: string;
   role: string;
   tools: string[];
   dates: string;
-  results?: (string | number)[];
+  spec: string;
+  site: SiteSettings;
 }
 
-const { projectNumber, role, tools, dates, results = [] } = Astro.props;
+const { projectNumber, role, tools, dates, spec, site } = Astro.props;
+const labels = site.pages.project;
 ---
-<section class="project-title-block" aria-label="Project title block">
+<section class="project-title-block" aria-label={labels.contextLabel}>
   <dl class="project-title-block__fields">
     <div class="project-title-block__field project-title-block__field--number">
-      <dt>Project no.</dt>
+      <dt>{labels.projectNumberLabel}</dt>
       <dd>{projectNumber}</dd>
     </div>
     <div class="project-title-block__field">
-      <dt>Role</dt>
+      <dt>{labels.roleLabel}</dt>
       <dd>{role}</dd>
     </div>
     <div class="project-title-block__field">
-      <dt>Tools</dt>
-      <dd>{tools.length ? tools.join(' · ') : '[TODO: add tools]'}</dd>
+      <dt>{labels.toolsLabel}</dt>
+      <dd>{tools.length ? tools.join(' · ') : labels.toolsPlaceholder}</dd>
     </div>
     <div class="project-title-block__field">
-      <dt>Dates</dt>
+      <dt>{labels.datesLabel}</dt>
       <dd>{dates}</dd>
     </div>
   </dl>
-  {results.length > 0 && (
-    <p class="project-title-block__spec" aria-label={`Key results: ${results.join('; ')}`}>
-      {results.map((result) => String(result).replace(/\s+(?:displacement|force|linear accuracy|rotational accuracy|linear velocity)$/i, '')).join(' · ')}
-    </p>
-  )}
+  <p class="project-title-block__spec" aria-label={`${labels.resultsHeading}: ${spec}`}>{spec}</p>
 </section>

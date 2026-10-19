@@ -1,0 +1,14 @@
+---
+interface Props {
+  eyebrow: string;
+  heading: string;
+  intro?: string;
+  className?: string;
+}
+const { eyebrow, heading, intro, className = '' } = Astro.props;
+---
+<header class:list={["page-intro", className]}>
+  <p class="eyebrow page-intro__eyebrow">{eyebrow}</p>
+  <h1>{heading}{!heading.endsWith('.') && <span class="page-intro__period" aria-hidden="true">.</span>}</h1>
+  {intro && <p class="page-intro__intro">{intro}</p>}
+</header>

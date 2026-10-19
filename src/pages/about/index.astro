@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import MediaImage from '../../components/MediaImage.astro';
+import { getResponsiveMedia, readAbout } from '../../lib/content';
+import { site } from '../../lib/schemas';
+
+const page = site.pages.about;
+const profile = readAbout();
+const photo = getResponsiveMedia('about', profile.profilePhoto.src);
+---
+<BaseLayout title={page.title} description={page.description}>
+  <main id="main-content" class="page-wrap content-page about-page">
+    <PageHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
+    <section class="about-intro" aria-label={page.heading}>
+      <p class="about-intro__bio todo-placeholder">{profile.bio}</p>
+      <figure class="about-intro__photo">
+        <MediaImage media={photo} source={profile.profilePhoto.src} alt={profile.profilePhoto.alt} placeholderAlt={profile.profilePhoto.alt} placeholderLabel={page.profilePlaceholder} sizes="(max-width: 700px) 100vw, 38vw" />
+      </figure>
+    </section>
+
+    <section class="about-section" aria-labelledby="education-heading">
+      <p class="eyebrow">{page.educationHeading}</p>
+      <h2 id="education-heading">{page.educationHeading}</h2>
+      <p class="about-education__degree">{profile.degree}</p>
+      <p>{profile.institution} <span aria-hidden="true">·</span> {profile.educationDates}</p>
+      <dl class="about-gpa">
+        <div><dt>{page.gpaLabel}</dt><dd>{profile.gpa}</dd></div>
+        <div><dt>{page.cumulativeGpaLabel}</dt><dd>{profile.cumulativeGpa}</dd></div>
+      </dl>
+      <h3 class="about-subheading">{page.courseworkHeading}</h3>
+      <ul class="about-inline-list">{profile.coursework.map((item) => <li>{item}</li>)}</ul>
+    </section>
+
+    <section class="about-section" aria-labelledby="skills-heading">
+      <p class="eyebrow">{page.skillsHeading}</p>
+      <h2 id="skills-heading">{page.skillsHeading}</h2>
+      <div class="skills-grid">
+        {profile.skills.map((group) => (
+          <section class="skill-group" aria-labelledby={`skill-${group.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`}>
+            <h3 id={`skill-${group.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`}>{group.name}</h3>
+            <ul>{group.items.map((item) => <li>{item}</li>)}</ul>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="about-section about-section--last" aria-labelledby="languages-heading">
+      <div class="about-languages">
+        <div>
+          <p class="eyebrow">{page.languagesHeading}</p>
+          <h2 id="languages-heading">{page.languagesHeading}</h2>
+          <ul class="language-list">{profile.languages.map((language) => <li><span>{language.name}</span><span>{language.level}</span></li>)}</ul>
+        </div>
+        <div>
+          <p class="eyebrow">{page.scoresHeading}</p>
+          <h2>{page.scoresHeading}</h2>
+          <div class="score-card">
+            <h3>{page.ieltsLabel}</h3>
+            <p class="score-card__overall">{page.overallLabel} <strong>{profile.ielts.overall}</strong></p>
+            <dl class="score-card__breakdown">
+              <div><dt>{page.listeningLabel}</dt><dd>{profile.ielts.listening}</dd></div>
+              <div><dt>{page.readingLabel}</dt><dd>{profile.ielts.reading}</dd></div>
+              <div><dt>{page.writingLabel}</dt><dd>{profile.ielts.writing}</dd></div>
+              <div><dt>{page.speakingLabel}</dt><dd>{profile.ielts.speaking}</dd></div>
+            </dl>
+          </div>
+          <div class="score-card score-card--toeic">
+            <h3>{page.toeicLabel}</h3>
+            <p class="score-card__overall"><strong>{profile.toeic}</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

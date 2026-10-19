@@ -1,0 +1,35 @@
+---
+import type { Project, SiteSettings } from '../lib/schemas';
+import { getResponsiveMedia } from '../lib/content';
+import { assetUrl } from '../lib/url';
+import MediaImage from './MediaImage.astro';
+
+interface Props { project: Project; site: SiteSettings; index: number; }
+const { project, site, index } = Astro.props;
+const cover = getResponsiveMedia(project.slug, project.cover);
+const work = site.pages.work;
+const date = `${project.startDate.slice(0, 4)}–${project.endDate === 'present' ? 'present' : project.endDate.slice(0, 4)}`;
+---
+<article class="project-preview" data-project-item data-project-slug={project.slug} data-category={project.category} data-tags={project.tags.join('|')}>
+  <a class="project-preview__link" href={assetUrl(`/projects/${project.slug}/`)}>
+    <div class="project-preview__cover">
+      <MediaImage
+        media={cover}
+        source={project.cover}
+        alt={project.coverAlt}
+        placeholderAlt={`${project.title} cover`}
+        placeholderLabel={site.homepage.imagePlaceholderPrefix}
+        sizes="(max-width: 700px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      />
+      <span class="project-preview__cover-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+    </div>
+    <div class="project-preview__meta">
+      <p class="eyebrow project-preview__category">{project.category}</p>
+      <time class="project-preview__date" datetime={project.startDate}>{date}</time>
+    </div>
+    <h3 class="project-preview__title">{project.title}</h3>
+    <p class="project-preview__summary">{project.summary}</p>
+    <p class="project-preview__spec" aria-label={`${work.resultPrefix}: ${project.spec}`}>{project.spec}</p>
+    <p class="project-preview__tags" aria-label={work.archiveTagsLabel}>{project.tags.join(' · ')}</p>
+  </a>
+</article>

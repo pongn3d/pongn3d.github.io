@@ -1,0 +1,80 @@
+---
+import type { Project, SiteSettings } from '../lib/schemas';
+import { getProcessedVideo, getResponsiveMedia } from '../lib/content';
+import { assetUrl } from '../lib/url';
+import MediaImage from './MediaImage.astro';
+
+interface Props { project: Project; site: SiteSettings; }
+const { project, site } = Astro.props;
+const labels = site.pages.project;
+
+function embedUrl(value: string): string | undefined {
+  try {
+    const url = new URL(value);
+    const host = url.hostname.replace(/^www\./, '').toLowerCase();
+    if (host === 'youtu.be') {
+      const id = url.pathname.split('/').filter(Boolean)[0];
+      return id ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}` : undefined;
+    }
+    if (host === 'youtube.com' || host === 'm.youtube.com') {
+      const id = url.searchParams.get('v') ?? url.pathname.split('/').filter(Boolean).at(-1);
+      return id ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}` : undefined;
+    }
+    if (host === 'vimeo.com') {
+      const id = url.pathname.split('/').filter(Boolean).at(-1);
+      return id && /^\d+$/.test(id) ? `https://player.vimeo.com/video/${id}` : undefined;
+    }
+  } catch { return undefined; }
+  return undefined;
+}
+---
+<section class="project-media" aria-labelledby="project-media-heading">
+  <h2 class="eyebrow project-media__heading" id="project-media-heading">{labels.galleryHeading}</h2>
+  <figure class="project-media__cover">
+    <MediaImage
+      media={getResponsiveMedia(project.slug, project.cover)}
+      source={project.cover}
+      alt={project.coverAlt}
+      placeholderAlt={`${project.title} cover`}
+      placeholderLabel={labels.coverPlaceholder}
+      sizes="(max-width: 900px) 100vw, 75vw"
+    />
+  </figure>
+  <div class="project-media__gallery">
+    {project.photos.map((photo) => (
+      <figure class="project-media__figure">
+        <MediaImage
+          media={getResponsiveMedia(project.slug, photo.src)}
+          source={photo.src}
+          alt={photo.alt}
+          placeholderAlt={`${project.title} photo`}
+          placeholderLabel={labels.photoPlaceholder}
+          sizes="(max-width: 700px) 100vw, 50vw"
+        />
+        <figcaption>{photo.alt.startsWith('[TODO:') ? photo.src : photo.alt}</figcaption>
+      </figure>
+    ))}
+    {project.videos.map((video) => {
+      const localVideo = getProcessedVideo(project.slug, video.src);
+      const embed = /^https?:\/\//i.test(video.src) ? embedUrl(video.src) : undefined;
+      const posterMedia = video.poster ? getResponsiveMedia(project.slug, video.poster) : undefined;
+      const poster = posterMedia?.variants.at(-1)?.src ? assetUrl(posterMedia.variants.at(-1)!.src) : undefined;
+      return (
+        <figure class="project-media__figure project-media__video">
+          {localVideo ? (
+            <video src={assetUrl(localVideo)} poster={poster} controls muted loop playsinline preload="none" aria-label={video.alt}>
+            </video>
+          ) : embed ? (
+            <iframe src={embed} title={video.alt} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          ) : (
+            <div class="media-placeholder" role="img" aria-label={`${video.alt}; expected file ${video.src}`}>
+              <span class="media-placeholder__label">{labels.videoPlaceholder}</span>
+              <code>{video.src}</code>
+            </div>
+          )}
+          <figcaption>{video.alt.startsWith('[TODO:') ? video.src : video.alt}</figcaption>
+        </figure>
+      );
+    })}
+  </div>
+</section>

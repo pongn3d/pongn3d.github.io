@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { readAchievements, readProjects } from '../../lib/content';
+import { site } from '../../lib/schemas';
+import { assetUrl } from '../../lib/url';
+
+const page = site.pages.achievements;
+const achievements = readAchievements().sort((a, b) => {
+  const year = (value: string) => Math.max(...(value.match(/\d{4}/g) ?? ['0']).map(Number));
+  return year(b.date) - year(a.date) || a.title.localeCompare(b.title);
+});
+const projects = readProjects().map(({ project }) => project);
+---
+<BaseLayout title={page.title} description={page.description}>
+  <main id="main-content" class="page-wrap content-page achievements-page">
+    <PageHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
+    <ol class="achievement-list" aria-label={page.heading}>
+      {achievements.map((achievement, index) => {
+        const related = projects.filter((project) => project.achievement === achievement.slug);
+        return (
+          <li id={achievement.slug} class="achievement-entry">
+            <span class="achievement-entry__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <article>
+              <p class="eyebrow">{achievement.date}</p>
+              <h2>{achievement.result ? `${achievement.result} — ${achievement.event}` : achievement.event}</h2>
+              <p>{achievement.summary}</p>
+              {related.length > 0 && (
+                <div class="related-projects">
+                  <p class="eyebrow">{page.relatedProjectLabel}</p>
+                  <ul>{related.map((project) => <li><a href={assetUrl(`/projects/${project.slug}/`)}>{project.title}<span aria-hidden="true"> ↗</span></a></li>)}</ul>
+                </div>
+              )}
+            </article>
+          </li>
+        );
+      })}
+    </ol>
+  </main>
+</BaseLayout>

@@ -31,19 +31,143 @@
     "1st Place, NTU Hackathon 2026"
   ],
   "navigation": [
-    { "label": "Work", "href": "#selected-work" },
-    { "label": "Experience", "href": "#currently" },
-    { "label": "About", "href": "#about-intro" },
-    { "label": "Contact", "href": "mailto:pongnapat3d@gmail.com" }
+    {
+      "label": "Work",
+      "href": "/work/"
+    },
+    {
+      "label": "Experience",
+      "href": "/experience/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/",
+      "variant": "contact"
+    }
   ],
   "homepage": {
     "credentialsLabel": "At a glance",
     "featuredEyebrow": "01 / A SMALL SELECTION · 06 PROJECTS",
     "featuredHeading": "Selected work",
     "featuredLink": "Browse the work",
-    "featuredLinkHref": "#selected-work",
+    "featuredLinkHref": "/work/",
     "imagePlaceholderPrefix": "Expected image",
     "imagePlaceholderAlt": "Project cover placeholder"
+  },
+  "pages": {
+    "work": {
+      "title": "Work — Pongnapat Arayangkul",
+      "description": "Explore Pongnapat's 16 robotics, mechanism, embedded, control, research and product-design projects.",
+      "eyebrow": "01 / ENGINEERING ARCHIVE",
+      "heading": "Work",
+      "intro": "A working archive of mechanisms, embedded systems, control, research and interactive design.",
+      "gridLabel": "Grid",
+      "archiveLabel": "Archive",
+      "categoryLabel": "Category",
+      "allCategoriesLabel": "All categories",
+      "tagSummaryLabel": "Filter by tags",
+      "tagMatchHint": "Projects match any selected tag.",
+      "resultPrefix": "Showing",
+      "projectSingular": "project",
+      "projectPlural": "projects",
+      "emptyMessage": "No projects match these filters.",
+      "archiveDateLabel": "Date",
+      "archiveTitleLabel": "Project",
+      "archiveCategoryLabel": "Category",
+      "archiveTagsLabel": "Tags",
+      "viewToggleLabel": "Project view",
+      "clearFiltersLabel": "Clear filters"
+    },
+    "project": {
+      "titleSuffix": "Pongnapat Arayangkul",
+      "contextLabel": "Context",
+      "overviewHeading": "Overview",
+      "whatIDidHeading": "What I did",
+      "processHeading": "Process",
+      "resultsHeading": "Results",
+      "learningHeading": "What I learned",
+      "galleryHeading": "Project media",
+      "projectNumberLabel": "Project no.",
+      "roleLabel": "Role",
+      "toolsLabel": "Tools",
+      "datesLabel": "Dates",
+      "coverPlaceholder": "Expected image",
+      "photoPlaceholder": "Expected photo",
+      "videoPlaceholder": "Expected video",
+      "previousLabel": "Previous project",
+      "nextLabel": "Next project",
+      "allWorkLabel": "Back to all work",
+      "noResultsLabel": "No quantified result was provided.",
+      "relatedProjectsLabel": "Related projects",
+      "toolsPlaceholder": "[TODO: add tools]"
+    },
+    "experience": {
+      "title": "Experience — Pongnapat Arayangkul",
+      "description": "Research, teaching, robotics competition and student-club experience.",
+      "eyebrow": "02 / ROLES & RESPONSIBILITY",
+      "heading": "Experience",
+      "intro": "A timeline of research, teaching, team leadership and student-club work.",
+      "relatedProjectsLabel": "Related projects"
+    },
+    "achievements": {
+      "title": "Competitions & Achievements — Pongnapat Arayangkul",
+      "description": "Selected robotics competitions and achievements, each connected to its related project.",
+      "eyebrow": "03 / COMPETITIONS & RECOGNITION",
+      "heading": "Competitions & Achievements",
+      "intro": "Selected competition entries and recognition, connected to the work behind them.",
+      "relatedProjectLabel": "Related project"
+    },
+    "about": {
+      "title": "About — Pongnapat Arayangkul",
+      "description": "Education, engineering skills, languages and test scores for robotics student Pongnapat Arayangkul.",
+      "eyebrow": "04 / BACKGROUND",
+      "heading": "About",
+      "educationHeading": "Education",
+      "courseworkHeading": "Selected coursework",
+      "skillsHeading": "Skills",
+      "languagesHeading": "Languages",
+      "scoresHeading": "Test scores",
+      "profilePlaceholder": "[TODO: add profile photo]",
+      "gpaLabel": "GPA",
+      "cumulativeGpaLabel": "Cumulative GPA",
+      "ieltsLabel": "IELTS",
+      "toeicLabel": "TOEIC",
+      "overallLabel": "Overall",
+      "listeningLabel": "Listening",
+      "readingLabel": "Reading",
+      "writingLabel": "Writing",
+      "speakingLabel": "Speaking"
+    },
+    "resume": {
+      "title": "Resume — Pongnapat Arayangkul",
+      "description": "Resume and contact details for Pongnapat Arayangkul.",
+      "eyebrow": "05 / RESUME",
+      "heading": "Resume",
+      "downloadPlaceholder": "[TODO: I'll upload it later]",
+      "contactLabel": "For a copy or to get in touch, contact me."
+    },
+    "contact": {
+      "title": "Contact — Pongnapat Arayangkul",
+      "description": "Contact Pongnapat Arayangkul by email, LinkedIn or GitHub.",
+      "eyebrow": "06 / CONTACT",
+      "heading": "Contact",
+      "intro": "For opportunities, collaborations or a conversation about the work.",
+      "emailLabel": "Email",
+      "linkedinLabel": "LinkedIn",
+      "githubLabel": "GitHub"
+    },
+    "notFound": {
+      "title": "Page not found — Pongnapat Arayangkul",
+      "description": "This page could not be found. Browse the robotics projects or return to the portfolio home page.",
+      "eyebrow": "404 / PAGE NOT FOUND",
+      "heading": "This page went missing.",
+      "homeLabel": "Return home",
+      "workLabel": "Browse the work"
+    }
   },
   "contact": {
     "email": "pongnapat3d@gmail.com",
@@ -51,7 +175,7 @@
     "github": "https://github.com/TNZInw123"
   },
   "footer": {
-    "manifesto": "[TODO: write a short manifesto line]",
+    "manifesto": "Mechanisms that move. Ideas with a little life.",
     "copyrightName": "Pongnapat Arayangkul",
     "backToTopLabel": "Back to top",
     "socialLabels": {
@@ -64,11 +188,15 @@
     "skipToContent": "Skip to content",
     "primaryNavigation": "Primary navigation",
     "footerNavigation": "Footer navigation",
-    "socialLinks": "Social links"
+    "socialLinks": "Social links",
+    "menuButton": "Menu",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
   },
   "seo": {
     "title": "Pongnapat Arayangkul — Robotics & Automation",
-    "description": "Pongnapat Arayangkul is a Robotics and Automation Engineering student at KMUTT working across mechanism design, embedded systems, control, and bio-inspired research.",
+    "description": "Robotics and Automation Engineering student at KMUTT working across mechanism design, embedded systems, control and bio-inspired research.",
+    "titleContext": "Robotics Portfolio",
     "openGraphImage": "/og-image.png",
     "keywords": [
       "robotics",

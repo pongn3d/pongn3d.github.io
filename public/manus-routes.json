@@ -1,8 +1,12 @@
 {
   "routes": [
-    {
-      "path": "/",
-      "title": "Pongnapat — Robotics & Automation Portfolio"
-    }
+    { "path": "/", "title": "Home — Pongnapat Arayangkul" },
+    { "path": "/work/", "title": "Work — Pongnapat Arayangkul" },
+    { "path": "/projects/:slug/", "title": "Project — Pongnapat Arayangkul" },
+    { "path": "/experience/", "title": "Experience — Pongnapat Arayangkul" },
+    { "path": "/achievements/", "title": "Competitions & Achievements — Pongnapat Arayangkul" },
+    { "path": "/about/", "title": "About — Pongnapat Arayangkul" },
+    { "path": "/resume/", "title": "Resume — Pongnapat Arayangkul" },
+    { "path": "/contact/", "title": "Contact — Pongnapat Arayangkul" }
   ]
 }

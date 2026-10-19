@@ -1,22 +1,74 @@
 ---
 import Wordmark from './Wordmark.astro';
 import type { SiteSettings } from '../lib/schemas';
+import { assetUrl } from '../lib/url';
 
-interface Props {
-  site: SiteSettings;
-}
-
+interface Props { site: SiteSettings; }
 const { site } = Astro.props;
 ---
-<header class="site-header">
+<header class="site-header" id="top" data-site-header>
   <div class="site-header__inner page-wrap">
     <Wordmark site={site} />
-    <nav class="site-nav" aria-label={site.labels.primaryNavigation}>
+    <button
+      class="site-nav-toggle"
+      type="button"
+      aria-controls="site-navigation"
+      aria-expanded="false"
+      aria-label={site.labels.openMenu}
+      data-open-label={site.labels.openMenu}
+      data-close-label={site.labels.closeMenu}
+      data-nav-toggle
+      hidden
+    >
+      <span>{site.labels.menuButton}</span>
+      <svg class="site-nav-toggle__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <path d="M3 5.5h14M3 10h14M3 14.5h14" />
+      </svg>
+    </button>
+    <nav class="site-nav" id="site-navigation" aria-label={site.labels.primaryNavigation} data-site-nav>
       {site.navigation.map((item) => (
-        <a class:list={["site-nav__link", item.label === 'Contact' && 'site-nav__contact']} href={item.href}>
+        <a class:list={["site-nav__link", item.variant === 'contact' && 'site-nav__contact']} href={assetUrl(item.href)} data-nav-link>
           {item.label}
         </a>
       ))}
     </nav>
   </div>
 </header>
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const toggle = header?.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const nav = header?.querySelector<HTMLElement>('[data-site-nav]');
+  if (header && toggle && nav) {
+    document.documentElement.classList.add('has-js');
+    const narrow = window.matchMedia('(max-width: 600px)');
+    const labels = {
+      open: toggle.dataset.openLabel ?? 'Open navigation menu',
+      close: toggle.dataset.closeLabel ?? 'Close navigation menu',
+    };
+    const setOpen = (open: boolean, moveFocus = false) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? labels.close : labels.open);
+      nav.hidden = narrow.matches && !open;
+      if (moveFocus && open) nav.querySelector<HTMLAnchorElement>('[data-nav-link]')?.focus();
+      if (moveFocus && !open) toggle.focus();
+    };
+    const syncViewport = () => {
+      toggle.hidden = !narrow.matches;
+      nav.hidden = narrow.matches;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', labels.open);
+    };
+    syncViewport();
+    narrow.addEventListener('change', syncViewport);
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true', true));
+    nav.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('[data-nav-link]') && narrow.matches) setOpen(false);
+    });
+    header.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && narrow.matches && toggle.getAttribute('aria-expanded') === 'true') setOpen(false, true);
+    });
+    document.addEventListener('click', (event) => {
+      if (narrow.matches && toggle.getAttribute('aria-expanded') === 'true' && !header.contains(event.target as Node)) setOpen(false);
+    });
+  }
+</script>

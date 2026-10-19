@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { site } from '../../lib/schemas';
+const page = site.pages.contact;
+---
+<BaseLayout title={page.title} description={page.description}>
+  <main id="main-content" class="page-wrap content-page contact-page">
+    <PageHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
+    <address class="contact-list" aria-label={page.heading}>
+      <a class="contact-item" href={`mailto:${site.contact.email}`}>
+        <span class="eyebrow">{page.emailLabel}</span>
+        <strong>{site.contact.email}</strong>
+        <span class="contact-item__arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="contact-item" href={site.contact.linkedin} target="_blank" rel="noreferrer">
+        <span class="eyebrow">{page.linkedinLabel}</span>
+        <strong>{page.linkedinLabel}</strong>
+        <span class="contact-item__arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="contact-item" href={site.contact.github} target="_blank" rel="noreferrer">
+        <span class="eyebrow">{page.githubLabel}</span>
+        <strong>{page.githubLabel}</strong>
+        <span class="contact-item__arrow" aria-hidden="true">↗</span>
+      </a>
+    </address>
+  </main>
+</BaseLayout>

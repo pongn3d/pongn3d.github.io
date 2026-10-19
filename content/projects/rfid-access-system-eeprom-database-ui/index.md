@@ -1,25 +1,38 @@
 ---
-title: RFID Access System with EEPROM Database and UI
-slug: rfid-access-system-eeprom-database-ui
-category: Embedded & Electronics
-tags:
-  - STM32
-  - PCB Design
-  - Embedded C
-  - Course Project
+title: "RFID Access System with EEPROM Database and UI"
+slug: "rfid-access-system-eeprom-database-ui"
+category: "Embedded & Electronics"
+tags: ["STM32", "PCB Design", "Embedded C", "Course Project"]
 startDate: "2025-11"
 endDate: "2026-01"
-role: "[TODO: add your role]"
-context: Embedded Systems course
+role: "[TODO: Add role]"
+context: "Embedded Systems course"
 featured: true
 featuredOrder: 4
-summary: An STM32 and MFRC522 access system with an EEPROM user database and LCD interface.
+summary: "An STM32 access system with UID authentication, EEPROM user management and a button-driven LCD interface."
 results: []
-cover: cover.jpg
+spec: "STM32 · MFRC522 · EEPROM"
+tools: ["STM32", "MFRC522", "EEPROM", "RTC", "Custom PCB"]
+cover: "cover.jpg"
+coverAlt: "[TODO: Describe cover.jpg]"
 photos:
-  - src: photo-1.jpg
-    alt: "[TODO: add descriptive alt text for photo-1.jpg]"
-  - src: photo-2.jpg
-    alt: "[TODO: add descriptive alt text for photo-2.jpg]"
-videos: []
+  - src: "photo-1.jpg"
+    alt: "[TODO: Describe photo-1.jpg]"
+  - src: "photo-2.jpg"
+    alt: "[TODO: Describe photo-2.jpg]"
+videos:
+  - src: "video-1.mp4"
+    poster: "video-1-poster.jpg"
+    alt: "[TODO: Describe video-1.mp4]"
+overview: >-
+  An embedded access-control prototype using STM32 and MFRC522 UID authentication, with an EEPROM user database and a button/LCD user interface. It was requested for future deployment in faculty facilities.
+whatIDid:
+  - "Implemented UID authentication and EEPROM user add/remove/verify actions through the button-driven LCD interface."
+  - "Added RTC status display."
+  - "Structured firmware as a modular, non-blocking FSM for RFID, EEPROM, LCD, RTC, LED heartbeat and buzzer."
+  - "Designed a custom PCB."
+process:
+  - "Separated peripheral functions into modular, non-blocking firmware components."
+  - "Integrated access control, status display and user management on a custom PCB."
+learning: "[TODO: Add what I learned.]"
 ---

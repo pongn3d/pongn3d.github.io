@@ -80,10 +80,12 @@ export function mountSculpture(root: HTMLElement): void {
     pearlGeometry,
     new THREE.MeshPhysicalMaterial({ color: '#f5ead1', roughness: 0.2, clearcoat: 0.75, clearcoatRoughness: 0.17 }),
   );
-  const winePearl = new THREE.Mesh(
+const winePearl = new THREE.Mesh(
     pearlGeometry,
     new THREE.MeshPhysicalMaterial({ color: '#572f3e', roughness: 0.22, clearcoat: 0.7, clearcoatRoughness: 0.18 }),
   );
+  creamPearl.position.set(1.35, 0.32, 0.2);
+  winePearl.position.set(-1.28, -0.28, -0.15);
   scene.add(creamPearl, winePearl);
 
   const setSize = (): void => {

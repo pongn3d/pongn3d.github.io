@@ -11,10 +11,10 @@ const site = JSON.parse((await readProjectFile('content/site.json')).toString())
 const [faviconSvg, logoMarkSvg, spaceRegular, spaceMedium, monoRegular, monoMedium, ogTemplate] = await Promise.all([
   readPublicAsset(site.assets.faviconSvg),
   readPublicAsset(site.assets.logoMark),
-  readPublicAsset('/fonts/Space-Grotesk-400.woff2'),
-  readPublicAsset('/fonts/Space-Grotesk-500.woff2'),
-  readPublicAsset('/fonts/JetBrains-Mono-400.woff2'),
-  readPublicAsset('/fonts/JetBrains-Mono-500.woff2'),
+  readProjectFile('src/fonts/Space-Grotesk-400.woff2'),
+  readProjectFile('src/fonts/Space-Grotesk-500.woff2'),
+  readProjectFile('src/fonts/JetBrains-Mono-400.woff2'),
+  readProjectFile('src/fonts/JetBrains-Mono-500.woff2'),
   readPublicAsset('/og-image.svg'),
 ]);
 

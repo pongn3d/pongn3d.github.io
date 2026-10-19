@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { formatDateRange, readProjects, sortProjectsNewest } from '../../lib/content';
+import { site, taxonomy } from '../../lib/schemas';
+import { assetUrl } from '../../lib/url';
+
+const page = site.pages.work;
+const projects = sortProjectsNewest(readProjects().map(({ project }) => project));
+---
+<BaseLayout title={page.title} description={page.description}>
+  <main id="main-content" class="page-wrap work-page">
+    <PageHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
+
+    <section class="work-controls" aria-label={page.viewToggleLabel}>
+      <div class="work-controls__top">
+        <div class="work-view-toggle" role="group" aria-label={page.viewToggleLabel}>
+          <button type="button" data-view-control="grid" aria-pressed="true">{page.gridLabel}</button>
+          <button type="button" data-view-control="archive" aria-pressed="false">{page.archiveLabel}</button>
+        </div>
+        <p class="work-result-count" aria-live="polite" data-result-count data-prefix={page.resultPrefix} data-singular={page.projectSingular} data-plural={page.projectPlural}>
+          {page.resultPrefix} {projects.length} {projects.length === 1 ? page.projectSingular : page.projectPlural}
+        </p>
+      </div>
+      <div class="work-filter-row">
+        <label class="work-category-filter" for="category-filter">
+          <span class="work-filter-label">{page.categoryLabel}</span>
+          <select id="category-filter" data-category-filter>
+            <option value="">{page.allCategoriesLabel}</option>
+            {taxonomy.categories.map((category) => <option value={category}>{category}</option>)}
+          </select>
+        </label>
+        <details class="work-tag-filter">
+          <summary>{page.tagSummaryLabel}</summary>
+          <p class="work-tag-filter__hint">{page.tagMatchHint}</p>
+          <fieldset>
+            <legend class="sr-only">{page.tagSummaryLabel}</legend>
+            {taxonomy.tags.map((tag) => (
+              <label class="work-tag-filter__option">
+                <input type="checkbox" value={tag} data-tag-filter />
+                <span>{tag}</span>
+              </label>
+            ))}
+          </fieldset>
+        </details>
+        <button class="work-clear-filters" type="button" data-clear-filters>{page.clearFiltersLabel}</button>
+      </div>
+    </section>
+
+    <p class="work-empty-state" data-empty-state hidden>{page.emptyMessage}</p>
+
+    <section class="work-view" id="work-grid-view" data-work-view="grid" aria-label={page.gridLabel}>
+      <div class="project-grid">
+        {projects.map((project, index) => <ProjectCard project={project} site={site} index={index} />)}
+      </div>
+    </section>
+
+    <section class="work-view work-view--archive" id="work-archive-view" data-work-view="archive" aria-label={page.archiveLabel} hidden>
+      <div class="archive-list__heading" aria-hidden="true">
+        <span>{page.archiveDateLabel}</span>
+        <span>{page.archiveTitleLabel}</span>
+        <span>{page.archiveCategoryLabel}</span>
+        <span>{page.archiveTagsLabel}</span>
+      </div>
+      <ol class="archive-list" aria-label={page.archiveLabel}>
+        {projects.map((project) => (
+          <li class="archive-row" data-project-item data-project-slug={project.slug} data-category={project.category} data-tags={project.tags.join('|')}>
+            <time class="archive-row__date" datetime={project.startDate}>{formatDateRange(project.startDate, project.endDate)}</time>
+            <a class="archive-row__title" href={assetUrl(`/projects/${project.slug}/`)}>{project.title}</a>
+            <span class="archive-row__category">{project.category}</span>
+            <span class="archive-row__tags">{project.tags.join(' · ')}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </main>
+</BaseLayout>
+<script>
+  import '../../scripts/work-filters';
+</script>

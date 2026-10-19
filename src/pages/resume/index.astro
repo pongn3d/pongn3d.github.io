@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { site } from '../../lib/schemas';
+import { assetUrl } from '../../lib/url';
+const page = site.pages.resume;
+---
+<BaseLayout title={page.title} description={page.description}>
+  <main id="main-content" class="page-wrap content-page resume-page">
+    <PageHeader eyebrow={page.eyebrow} heading={page.heading} />
+    <section class="resume-placeholder" aria-label={page.heading}>
+      <p class="eyebrow">{page.downloadPlaceholder}</p>
+      <p class="resume-placeholder__note">{page.contactLabel}</p>
+      <a class="text-link resume-placeholder__link" href={assetUrl('/contact/')}>{site.pages.contact.heading}<span aria-hidden="true"> ↗</span></a>
+    </section>
+  </main>
+</BaseLayout>
