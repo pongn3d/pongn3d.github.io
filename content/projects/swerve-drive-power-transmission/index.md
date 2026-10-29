@@ -13,7 +13,7 @@ results: []
 spec: "Bevel gears · belts · Z-index encoder homing"
 tools: ["Bevel gears", "Belts", "Incremental encoder"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "The swerve drive module on a bench, showing gears, belt drive, DC gear motors and a red drive wheel."
 photos:
   - src: "photo-1.jpg"
     alt: "[TODO: Describe photo-1.jpg]"

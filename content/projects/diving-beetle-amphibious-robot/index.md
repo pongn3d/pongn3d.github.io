@@ -13,8 +13,8 @@ summary: "Passive drag amplification and compliant locomotion for an amphibious 
 results: []
 spec: "2-DOF yaw/roll · folding-fan drag amplification"
 tools: ["Cable-driven differential", "Kinematic modeling", "Waterproof motor modules"]
-cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+cover: "cover.png"
+coverAlt: "CAD render of the amphibious robot: a transparent central electronics cylinder with four red motor modules and black legs."
 photos:
   - src: "photo-1.jpg"
     alt: "[TODO: Describe photo-1.jpg]"

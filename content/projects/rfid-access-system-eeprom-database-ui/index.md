@@ -14,7 +14,7 @@ results: []
 spec: "STM32 · MFRC522 · EEPROM"
 tools: ["STM32", "MFRC522", "EEPROM", "RTC", "Custom PCB"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "The 3D-printed RFID access system with an LCD, status LED, buttons and a card reader, beside RFID cards and a blue key fob."
 photos:
   - src: "photo-1.jpg"
     alt: "[TODO: Describe photo-1.jpg]"
