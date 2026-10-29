@@ -14,10 +14,10 @@ results: []
 spec: "3-axis foot-force sensing · custom PCBs"
 tools: ["Load cells", "FEA", "Custom PCB design"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "A multi-jointed robot leg on a gantry rig above artificial grass."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "Finite element analysis of the foot force sensor under force from the left, left-front, back and below."
   - src: "photo-2.jpg"
     alt: "[TODO: Describe photo-2.jpg]"
 videos:

@@ -13,7 +13,7 @@ results: []
 spec: "2-R planar pendulum · MATLAB/Simulink · Simscape validation"
 tools: ["MATLAB/Simulink", "Simscape Multibody", "DH parameters", "Lagrangian dynamics"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "Slide showing the MATLAB/Simulink simulation setup with the trajectory generator, Simscape Multibody plant and kinematics blocks."
 photos:
   - src: "photo-1.jpg"
     alt: "[TODO: Describe photo-1.jpg]"
@@ -22,7 +22,13 @@ photos:
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+    alt: "Simulation of the 2-R planar pendulum falling freely under gravity (forward dynamics)."
+  - src: "video-2.mp4"
+    poster: "video-2-poster.jpg"
+    alt: "Simulation of the 2-R arm following a straight-line path using inverse kinematics."
+  - src: "video-3.mp4"
+    poster: "video-3-poster.jpg"
+    alt: "Simulation of the 2-R arm rejecting an external torque disturbance."
 overview: >-
   A Kinematics course project modeling and simulating a two-link planar pendulum, with results validated against Simscape Multibody.
 whatIDid:

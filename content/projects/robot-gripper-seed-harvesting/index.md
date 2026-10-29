@@ -16,7 +16,7 @@ cover: "cover.jpg"
 coverAlt: "A servo-driven gripper with blue and yellow printed fingers and gear linkage mounted on the robot."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "Top view of the competition robot with 3D-printed parts, wiring and mounted mechanisms."
   - src: "photo-2.jpg"
     alt: "[TODO: Describe photo-2.jpg]"
 videos:

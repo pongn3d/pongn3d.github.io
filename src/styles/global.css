@@ -1862,7 +1862,7 @@ a:focus-visible {
 }
 
 .achievement-entry--photo {
-  grid-template-columns: 74px minmax(0, 1fr) minmax(190px, 300px);
+  grid-template-columns: 74px minmax(0, 1fr) minmax(240px, 380px);
   column-gap: clamp(20px, 4vw, 48px);
 }
 
@@ -1875,7 +1875,14 @@ a:focus-visible {
 .achievement-entry__photo .media-image,
 .achievement-entry__photo .media-placeholder {
   width: 100%;
-  aspect-ratio: 4 / 5;
+}
+
+.achievement-entry__photo .media-image img {
+  height: auto;
+}
+
+.achievement-entry__photo .media-placeholder {
+  aspect-ratio: 4 / 3;
 }
 
 /* About, scores and education */
@@ -2178,7 +2185,7 @@ a:focus-visible {
   .achievement-entry__photo {
     grid-column: 2;
     grid-row: 2;
-    max-width: 320px;
+    max-width: 480px;
     margin-top: 6px;
   }
 }

@@ -13,10 +13,10 @@ results: []
 spec: "Two functions · basket holding + flag pulling"
 tools: ["CAD", "Prototyping", "Force and load calculations"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "A hand holding the pink 3D-printed gripper with its pair of finger mechanisms."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "A purple 3D-printed gripper with rollers and guide rods on a white table."
   - src: "photo-2.jpg"
     alt: "[TODO: Describe photo-2.jpg]"
 videos:

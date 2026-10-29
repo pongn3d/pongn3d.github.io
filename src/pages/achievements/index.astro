@@ -35,7 +35,7 @@ const projects = readProjects().map(({ project }) => project);
             </article>
             {achievement.photo && (
               <figure class="achievement-entry__photo">
-                <MediaImage media={getResponsiveMedia(`achievement-${achievement.slug}`, achievement.photo.src)} source={achievement.photo.src} alt={achievement.photo.alt} placeholderLabel={site.pages.project.photoPlaceholder} sizes="(max-width: 900px) 100vw, 300px" />
+                <MediaImage media={getResponsiveMedia(`achievement-${achievement.slug}`, achievement.photo.src)} source={achievement.photo.src} alt={achievement.photo.alt} placeholderLabel={site.pages.project.photoPlaceholder} sizes="(max-width: 900px) 100vw, 380px" />
               </figure>
             )}
           </li>

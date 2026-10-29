@@ -13,8 +13,8 @@ summary: "A compliant actuator driven by electroosmotic flow rather than a mecha
 results: ["44.2 mm displacement", "0.57 N force"]
 spec: "44.2 mm displacement · 0.57 N force"
 tools: ["Electroosmotic flow", "Compliant membrane", "Custom acrylic housing"]
-cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+cover: "cover.png"
+coverAlt: "The transparent electroosmotic actuator on a table beside a bench power supply."
 photos:
   - src: "photo-1.jpg"
     alt: "[TODO: Describe photo-1.jpg]"
@@ -23,7 +23,10 @@ photos:
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+    alt: "Demonstration of the electroosmotic actuator running from a bench power supply."
+  - src: "video-2.mp4"
+    poster: "video-2-poster.jpg"
+    alt: "Test of the electroosmotic actuator on a digital scale."
 overview: >-
   This course project explored actuation through electroosmotic flow without a mechanical transmission. A compliant membrane replaced a rigid piston to address pressure and sealing limitations.
 whatIDid:

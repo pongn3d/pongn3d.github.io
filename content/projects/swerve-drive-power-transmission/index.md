@@ -16,7 +16,7 @@ cover: "cover.jpg"
 coverAlt: "The swerve drive module on a bench, showing gears, belt drive, DC gear motors and a red drive wheel."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "Overhead view of the robot frame with drive motors, wheels and wiring."
   - src: "photo-2.jpg"
     alt: "[TODO: Describe photo-2.jpg]"
 videos:
