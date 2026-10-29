@@ -13,10 +13,10 @@ results: ["Reduced worker fatigue", "Eliminated measurement errors"]
 spec: "Weight-ratio dispensing · load cells · Arduino"
 tools: ["SOLIDWORKS", "Load cells", "Arduino", "Sensors"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "The automatic MOCA dispenser frame with tubing and a controller box beside a digital scale."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "Wide view of the MOCA dispenser frame with its tubing and container in a workshop."
   - src: "photo-2.jpg"
     alt: "[TODO: Describe photo-2.jpg]"
 videos:

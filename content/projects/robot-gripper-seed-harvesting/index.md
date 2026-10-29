@@ -13,7 +13,7 @@ results: []
 spec: "Servo-driven · synchronized fingers · rubberized grips"
 tools: ["Servo", "Geared synchronized fingers", "Rubberized grips"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "A servo-driven gripper with blue and yellow printed fingers and gear linkage mounted on the robot."
 photos:
   - src: "photo-1.jpg"
     alt: "[TODO: Describe photo-1.jpg]"

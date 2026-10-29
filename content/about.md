@@ -1,8 +1,8 @@
 ---
-bio: "[TODO: I'll write a personal paragraph]"
+bio: "I’m a Robotics and Automation Engineering student at KMUTT, passionate about building intelligent machines that bridge the gap between engineering concepts and real-world applications. My interests lie in robotics research and development, particularly bio-inspired robotics, mechanical design, and the integration of mechanical, electrical, and control systems. Through research, hands-on projects, and leadership experiences, I’ve learned to approach challenges from both a technical and systems-level perspective. Beyond engineering, I’m interested in business, leadership, and the process of turning innovative ideas into meaningful solutions. I’m always looking for opportunities to learn, experiment, and create technology that makes a difference."
 profilePhoto:
   src: "profile.jpg"
-  alt: "[TODO: Add a descriptive profile-photo caption]"
+  alt: "It's me, Pongnapat"
 degree: "B.Eng. Robotics and Automation Engineering"
 institution: "King Mongkut's University of Technology Thonburi (KMUTT)"
 educationDates: "Aug 2023–expected 2027"
