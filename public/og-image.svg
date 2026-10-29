@@ -20,8 +20,8 @@
   <circle cx="750" cy="450" r="15" fill="#572f3e" />
   <text x="159" y="108" class="heading" font-size="36" fill="#542f28">pongnapat<tspan fill="#e17145">.</tspan></text>
   <text x="99" y="245" class="label" font-size="14" fill="#8f4b34">ROBOTICS &amp; AUTOMATION ENGINEERING — KMUTT</text>
-  <text x="96" y="339" class="heading" font-size="68" letter-spacing="-2.5" fill="#542f28">Mechanisms that move.</text>
-  <text x="96" y="420" class="heading" font-size="68" letter-spacing="-2.5" fill="#542f28">Ideas with a little <tspan fill="#e17145">life.</tspan></text>
+  <text x="96" y="339" class="heading" font-size="68" letter-spacing="-2.5" fill="#542f28">Curiosity in mind,</text>
+  <text x="96" y="420" class="heading" font-size="68" letter-spacing="-2.5" fill="#542f28">creation in <tspan fill="#e17145">hand.</tspan></text>
   <path d="M99 468h74" stroke="#e17145" stroke-width="2" />
   <text x="96" y="516" class="label" font-size="12" fill="#735c4d">01 / SELECTED WORK</text>
 </svg>

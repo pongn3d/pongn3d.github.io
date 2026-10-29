@@ -11,9 +11,9 @@
   },
   "hero": {
     "eyebrow": "ROBOTICS & AUTOMATION ENGINEERING — KMUTT",
-    "headlineLineOne": "Mechanisms that move.",
-    "headlineLineTwo": "Ideas with a little",
-    "headlineAccent": "life.",
+    "headlineLineOne": "Curiosity in mind,",
+    "headlineLineTwo": "creation in",
+    "headlineAccent": "hand.",
     "intro": "I'm Pongnapat, a robotics student at KMUTT. I work across mechanism design, embedded systems and control, with a growing focus on bio-inspired research.",
     "currentlyLabel": "Currently",
     "currentlyRole": "Research Intern at VISTEC",
@@ -179,7 +179,7 @@
     "github": "https://github.com/TNZInw123"
   },
   "footer": {
-    "manifesto": "Mechanisms that move. Ideas with a little life.",
+    "manifesto": "Curiosity in mind, creation in hand.",
     "copyrightName": "Pongnapat Arayangkul",
     "backToTopLabel": "Back to top",
     "socialLabels": {
