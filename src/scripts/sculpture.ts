@@ -45,48 +45,84 @@ export function mountSculpture(root: HTMLElement): void {
   scene.add(rimLight);
 
   const objectRoot = new THREE.Group();
+  objectRoot.rotation.set(0.28, -0.5, 0);
   scene.add(objectRoot);
 
-  const sculptureMaterial = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color('#f36c2e'),
-    roughness: 0.36,
-    metalness: 0.02,
-    clearcoat: 0.2,
-    clearcoatRoughness: 0.34,
-    sheen: 0.14,
-    sheenColor: new THREE.Color('#f58a52'),
-    sheenRoughness: 0.55,
-    envMapIntensity: 0.58,
-  });
-  const flowerGeometry = new THREE.SphereGeometry(1, 128, 80);
-  const positions = flowerGeometry.getAttribute('position');
-  for (let index = 0; index < positions.count; index += 1) {
-    const x = positions.getX(index);
-    const y = positions.getY(index);
-    const z = positions.getZ(index);
-    const radial = Math.hypot(x, y);
-    const angle = Math.atan2(y, x);
-    const lobeScale = 1 + 0.31 * Math.cos(6 * angle) * Math.pow(radial, 2.1);
-    positions.setXYZ(index, x * lobeScale, y * lobeScale, z * 0.53);
-  }
-  flowerGeometry.computeVertexNormals();
-  const flower = new THREE.Mesh(flowerGeometry, sculptureMaterial);
-  flower.castShadow = false;
-  flower.receiveShadow = false;
-  objectRoot.add(flower);
+  // Orbital system: glossy core, a satin band, a frosted ring with small lights and two wire orbits with pearls.
+  const orbital = new THREE.Group();
+  orbital.scale.setScalar(0.68);
+  objectRoot.add(orbital);
 
-  const pearlGeometry = new THREE.SphereGeometry(0.075, 28, 20);
-  const creamPearl = new THREE.Mesh(
-    pearlGeometry,
-    new THREE.MeshPhysicalMaterial({ color: '#f5ead1', roughness: 0.2, clearcoat: 0.75, clearcoatRoughness: 0.17 }),
+  const core = new THREE.Mesh(
+    new THREE.SphereGeometry(0.52, 96, 64),
+    new THREE.MeshPhysicalMaterial({ color: '#f36c2e', roughness: 0.3, clearcoat: 0.6, clearcoatRoughness: 0.2, envMapIntensity: 0.9 }),
   );
-const winePearl = new THREE.Mesh(
-    pearlGeometry,
-    new THREE.MeshPhysicalMaterial({ color: '#572f3e', roughness: 0.22, clearcoat: 0.7, clearcoatRoughness: 0.18 }),
+  orbital.add(core);
+
+  const annulus = (outer: number, inner: number, depth: number, bevel: number): THREE.ExtrudeGeometry => {
+    const shape = new THREE.Shape();
+    shape.absarc(0, 0, outer, 0, Math.PI * 2, false);
+    const hole = new THREE.Path();
+    hole.absarc(0, 0, inner, 0, Math.PI * 2, true);
+    shape.holes.push(hole);
+    const geometry = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel, bevelSegments: 4, curveSegments: 96 });
+    geometry.translate(0, 0, -depth / 2);
+    return geometry;
+  };
+
+  const bandPivot = new THREE.Group();
+  const band = new THREE.Mesh(
+    annulus(1.62, 1.34, 0.12, 0.025),
+    new THREE.MeshPhysicalMaterial({ color: '#542f28', metalness: 0.35, roughness: 0.5, clearcoat: 0.15, envMapIntensity: 1 }),
   );
-  creamPearl.position.set(1.35, 0.32, 0.2);
-  winePearl.position.set(-1.28, -0.28, -0.15);
-  scene.add(creamPearl, winePearl);
+  bandPivot.add(band);
+  orbital.add(bandPivot);
+
+  const glassPivot = new THREE.Group();
+  const glass = new THREE.Mesh(
+    annulus(1.18, 0.94, 0.1, 0.02),
+    new THREE.MeshPhysicalMaterial({ color: '#f5ead1', roughness: 0.4, transparent: true, opacity: 0.62, clearcoat: 0.5, envMapIntensity: 0.9, depthWrite: false }),
+  );
+  glassPivot.add(glass);
+  const lightGeometry = new THREE.BoxGeometry(0.045, 0.045, 0.02);
+  const lightMaterial = new THREE.MeshBasicMaterial({ color: '#e17145' });
+  for (let index = 0; index < 28; index += 1) {
+    const angle = (index / 28) * Math.PI * 2 + (index % 3) * 0.05;
+    const radius = 1 + (((index * 37) % 11) / 11) * 0.14;
+    const light = new THREE.Mesh(lightGeometry, lightMaterial);
+    light.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius, 0.06 + ((index * 13) % 5) / 100);
+    light.rotation.z = angle * 3;
+    glassPivot.add(light);
+  }
+  orbital.add(glassPivot);
+
+  const wireMaterial = new THREE.MeshStandardMaterial({ color: '#542f28', metalness: 0.6, roughness: 0.35 });
+  const pearlGeometry = new THREE.SphereGeometry(0.085, 28, 20);
+  const wires = [
+    { radius: 1.9, tube: 0.014, tilt: [0.4, 0.2, -0.5], speed: 0.4, color: '#f5ead1', roughness: 0.2, clearcoat: 0.75 },
+    { radius: 1.45, tube: 0.012, tilt: [1.35, -0.3, 0.9], speed: -0.55, color: '#572f3e', roughness: 0.22, clearcoat: 0.7 },
+  ].map((wire) => {
+    const pivot = new THREE.Group();
+    pivot.add(new THREE.Mesh(new THREE.TorusGeometry(wire.radius, wire.tube, 12, 160), wireMaterial));
+    const pearl = new THREE.Mesh(pearlGeometry, new THREE.MeshPhysicalMaterial({ color: wire.color, roughness: wire.roughness, clearcoat: wire.clearcoat }));
+    pivot.add(pearl);
+    pivot.rotation.set(wire.tilt[0], wire.tilt[1], wire.tilt[2]);
+    orbital.add(pivot);
+    return { pearl, radius: wire.radius, speed: wire.speed };
+  });
+
+  // Every ring and pearl is a function of time, so the still render for reduced motion uses the same pose.
+  const poseOrbits = (time: number): void => {
+    band.rotation.z = time * 0.12;
+    glass.rotation.z = time * -0.2;
+    bandPivot.rotation.set(1.2 + Math.sin(time * 0.25) * 0.1, 0.35, 0.25);
+    glassPivot.rotation.set(0.35, -0.4 + Math.sin(time * 0.3) * 0.12, 0.9);
+    for (const wire of wires) {
+      const angle = time * wire.speed;
+      wire.pearl.position.set(Math.cos(angle) * wire.radius, Math.sin(angle) * wire.radius, 0);
+    }
+  };
+  poseOrbits(1);
 
   const setSize = (): void => {
     const bounds = root.getBoundingClientRect();
@@ -109,7 +145,7 @@ const winePearl = new THREE.Mesh(
     new GLTFLoader().load(
       modelUrl,
       (gltf) => {
-        flower.visible = false;
+        orbital.visible = false;
         const model = gltf.scene;
         const bounds = new THREE.Box3().setFromObject(model);
         const size = bounds.getSize(new THREE.Vector3());
@@ -124,8 +160,8 @@ const winePearl = new THREE.Mesh(
       },
       undefined,
       (error) => {
-        console.error('Could not load the configured hero GLB; using the built-in sculpture.', error);
-        flower.visible = true;
+        console.error('Could not load the configured hero GLB; using the built-in orbital sculpture.', error);
+        orbital.visible = true;
         root.dataset.model = 'fallback';
         renderer.render(scene, camera);
       },
@@ -137,18 +173,19 @@ const winePearl = new THREE.Mesh(
 
   let elapsed = 0;
   let spinVelocity = 0;
+  let dragTilt = 0;
+  let dragging = false;
   let frame = 0;
   const animate = (): void => {
     frame = 0;
     elapsed += 0.008;
     if (!reducedMotionQuery.matches) {
       objectRoot.rotation.y += 0.003 + spinVelocity;
-      objectRoot.rotation.x = Math.sin(elapsed * 0.5) * 0.035;
+      if (!dragging) dragTilt *= 0.96;
+      objectRoot.rotation.x = 0.28 + dragTilt + Math.sin(elapsed * 0.5) * 0.035;
       objectRoot.position.y = Math.sin(elapsed * 0.65) * 0.045;
       spinVelocity *= 0.982;
-      const orbit = elapsed * 0.52;
-      creamPearl.position.set(Math.cos(orbit) * 1.55, Math.sin(orbit * 0.88) * 0.7 + 0.3, Math.sin(orbit) * 0.55);
-      winePearl.position.set(Math.cos(orbit + 3.0) * 1.48, Math.sin(orbit * 0.9 + 2.1) * 0.68 - 0.12, Math.sin(orbit + 3.0) * 0.45);
+      poseOrbits(elapsed * 2);
     }
     renderer.render(scene, camera);
     if (!reducedMotionQuery.matches) frame = window.requestAnimationFrame(animate);
@@ -180,7 +217,6 @@ const winePearl = new THREE.Mesh(
   if (canDrag) {
     let lastX = 0;
     let lastY = 0;
-    let dragging = false;
     canvas.addEventListener('pointerdown', (event) => {
       if (event.pointerType === 'touch') return;
       dragging = true;
@@ -192,7 +228,8 @@ const winePearl = new THREE.Mesh(
     canvas.addEventListener('pointermove', (event) => {
       if (!dragging || event.pointerType === 'touch') return;
       objectRoot.rotation.y += (event.clientX - lastX) * 0.008;
-      objectRoot.rotation.x += (event.clientY - lastY) * 0.006;
+      dragTilt = Math.max(-1.1, Math.min(1.1, dragTilt + (event.clientY - lastY) * 0.006));
+      objectRoot.rotation.x = 0.28 + dragTilt;
       lastX = event.clientX;
       lastY = event.clientY;
       if (reducedMotionQuery.matches) renderStill();
