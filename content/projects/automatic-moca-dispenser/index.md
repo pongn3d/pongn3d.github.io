@@ -17,12 +17,7 @@ coverAlt: "The automatic MOCA dispenser frame with tubing and a controller box b
 photos:
   - src: "photo-1.jpg"
     alt: "Wide view of the MOCA dispenser frame with its tubing and container in a workshop."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+videos: []
 overview: >-
   A Robotics Exploration course project to automatically dispense and mix MOCA and polyurethane by weight ratio, informed by factory-worker feedback.
 whatIDid:

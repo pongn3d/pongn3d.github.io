@@ -14,11 +14,7 @@ spec: "2-R planar pendulum · MATLAB/Simulink · Simscape validation"
 tools: ["MATLAB/Simulink", "Simscape Multibody", "DH parameters", "Lagrangian dynamics"]
 cover: "cover.jpg"
 coverAlt: "Slide showing the MATLAB/Simulink simulation setup with the trajectory generator, Simscape Multibody plant and kinematics blocks."
-photos:
-  - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
+photos: []
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"

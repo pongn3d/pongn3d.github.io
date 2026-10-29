@@ -17,12 +17,7 @@ coverAlt: "The swerve drive module on a bench, showing gears, belt drive, DC gea
 photos:
   - src: "photo-1.jpg"
     alt: "Overhead view of the robot frame with drive motors, wheels and wiring."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+videos: []
 experience: "head-mechanical-abu-robocon"
 achievement: "abu-robocon-2025"
 overview: >-

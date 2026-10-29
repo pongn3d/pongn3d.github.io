@@ -17,8 +17,6 @@ coverAlt: "The Wave Learning Kit with a lit screen showing a sine wave above a r
 photos:
   - src: "photo-1.jpg"
     alt: "Students in purple shirts trying the Wave Learning Kit at a demo day booth."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"

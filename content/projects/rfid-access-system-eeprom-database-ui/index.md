@@ -15,15 +15,8 @@ spec: "STM32 · MFRC522 · EEPROM"
 tools: ["STM32", "MFRC522", "EEPROM", "RTC", "Custom PCB"]
 cover: "cover.jpg"
 coverAlt: "The 3D-printed RFID access system with an LCD, status LED, buttons and a card reader, beside RFID cards and a blue key fob."
-photos:
-  - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+photos: []
+videos: []
 overview: >-
   An embedded access-control prototype using STM32 and MFRC522 UID authentication, with an EEPROM user database and a button/LCD user interface. It was requested for future deployment in faculty facilities.
 whatIDid:

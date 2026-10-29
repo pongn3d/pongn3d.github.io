@@ -1523,28 +1523,52 @@ a:focus-visible {
   margin: 0;
 }
 
+/* Project media keeps each file's own ratio. Very tall media is capped in height and
+   centred on the tinted background instead of being cropped. */
 .project-media__cover .media-image,
-.project-media__cover .media-placeholder {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-}
-
-.project-media__gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 18px;
-}
-
+.project-media__cover .media-placeholder,
 .project-media__figure .media-image,
 .project-media__figure .media-placeholder,
 .project-media__figure video,
 .project-media__figure iframe {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
   border: 0;
-  object-fit: cover;
+}
+
+.project-media__cover .media-placeholder {
+  aspect-ratio: 16 / 9;
+}
+
+.project-media__figure .media-placeholder,
+.project-media__figure iframe {
+  aspect-ratio: 3 / 2;
+}
+
+.project-media__figure iframe[src*="youtube"],
+.project-media__figure iframe[src*="vimeo"] {
+  aspect-ratio: 16 / 9;
+}
+
+.project-media__cover .media-image img,
+.project-media__figure .media-image img,
+.project-media__figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(88vh, 900px);
+  object-fit: contain;
+}
+
+.project-media__gallery {
+  column-count: 2;
+  column-gap: 18px;
+  margin-top: 18px;
+}
+
+.project-media__figure {
+  margin-bottom: 18px;
+  break-inside: avoid;
 }
 
 .project-media__figure video {
@@ -2323,7 +2347,11 @@ a:focus-visible {
   }
 
   .project-media__gallery {
-    gap: 12px;
+    column-gap: 12px;
+  }
+
+  .project-media__figure {
+    margin-bottom: 12px;
   }
 
   .project-detail__body {
@@ -2420,14 +2448,7 @@ a:focus-visible {
   }
 
   .project-media__gallery {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .project-media__figure .media-image,
-  .project-media__figure .media-placeholder,
-  .project-media__figure video,
-  .project-media__figure iframe {
-    aspect-ratio: 3 / 2;
+    column-count: 1;
   }
 
   .experience-entry,

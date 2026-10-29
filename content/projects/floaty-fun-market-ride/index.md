@@ -18,12 +18,7 @@ coverAlt: "A participant at a laptop among other attendees in a busy hackathon r
 photos:
   - src: "photo-1.jpg"
     alt: "Two people on a small stage with a laptop and orange boxes."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+videos: []
 achievement: "ntu-hackathon-2026"
 overview: >-
   A stroke-rehabilitation system combining hardware sensors and gamified therapy, controlled through body shifting and reaching. The floating-market theme is intended to support motivation during repeated balance training at home.

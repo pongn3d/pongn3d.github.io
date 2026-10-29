@@ -18,6 +18,8 @@ spec: "[TODO: A concise factual engineering spec line]"
 tools: [] # Tools or methods explicitly supported by the source content.
 cover: "cover.jpg" # Drop the original JPG/PNG/WebP in this folder; build creates responsive WebP.
 coverAlt: "[TODO: Describe cover.jpg for screen readers]"
+# photos and videos are optional: delete the entries you have no file for, or use [] for none.
+# Media is shown at its own ratio, so any shape of photo or video works.
 photos:
   - src: "photo-1.jpg" # Use local filenames only; 2–3 project photos are typical.
     alt: "[TODO: Accurate image description for screen readers]"

@@ -19,10 +19,7 @@ photos:
     alt: "Slide on safety challenges in reinforcement learning: exploration risk, actuator limits and formal safety."
   - src: "photo-2.jpg"
     alt: "Slide on training performance and convergence, with learning curves and notes for each method."
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+videos: []
 overview: >-
   A Deep Reinforcement Learning course project combining Control Barrier Functions and PPO in Isaac Lab while modeling non-ideal cart-pole dynamics for sim-to-real fidelity.
 whatIDid:

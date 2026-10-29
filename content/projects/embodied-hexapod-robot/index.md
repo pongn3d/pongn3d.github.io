@@ -18,12 +18,7 @@ coverAlt: "A multi-jointed robot leg on a gantry rig above artificial grass."
 photos:
   - src: "photo-1.jpg"
     alt: "Finite element analysis of the foot force sensor under force from the left, left-front, back and below."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+videos: []
 overview: >-
   Hardware engineering for a physical-AI hexapod, spanning a three-axis foot-force sensing module and the robot's central electrical system.
 whatIDid:

@@ -18,8 +18,6 @@ coverAlt: "The 2-DOF vertical RP plotter on a table beside its grey control box 
 photos:
   - src: "photo-1.jpg"
     alt: "Close-up of the plotter's red end effector, linear axis and motor on its base plate."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"

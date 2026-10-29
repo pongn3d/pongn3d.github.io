@@ -17,12 +17,7 @@ coverAlt: "A servo-driven gripper with blue and yellow printed fingers and gear 
 photos:
   - src: "photo-1.jpg"
     alt: "Top view of the competition robot with 3D-printed parts, wiring and mounted mechanisms."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+videos: []
 experience: "head-mechanical-abu-robocon"
 achievement: "abu-robocon-2024"
 overview: >-

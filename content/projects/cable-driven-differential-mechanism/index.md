@@ -17,8 +17,6 @@ coverAlt: "A white 3D-printed cable-driven joint attached to a red motor on a de
 photos:
   - src: "photo-1.jpg"
     alt: "The yellow 3D-printed cable-driven differential prototype with angle scales marked on its discs."
-  - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"

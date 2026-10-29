@@ -19,10 +19,7 @@ photos:
     alt: "Overhead view of the cleaning robot rail and electronics on a workshop floor, with a person sitting beside it."
   - src: "photo-2.jpg"
     alt: "Rows of solar panels at a solar farm under a blue sky."
-videos:
-  - src: "video-1.mp4"
-    poster: "video-1-poster.jpg"
-    alt: "[TODO: Describe video-1.mp4]"
+videos: []
 experience: "research-assistant-solar-cleaning"
 overview: >-
   A research-assistant project at FIBO, KMUTT, under the Electricity Generating Authority of Thailand (EGAT), for floating solar farms.

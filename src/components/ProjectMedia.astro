@@ -40,6 +40,7 @@ function embedUrl(value: string): string | undefined {
       sizes="(max-width: 900px) 100vw, 75vw"
     />
   </figure>
+  {(project.photos.length > 0 || project.videos.length > 0) && (
   <div class="project-media__gallery">
     {project.photos.map((photo) => (
       <figure class="project-media__figure">
@@ -59,10 +60,11 @@ function embedUrl(value: string): string | undefined {
       const embed = /^https?:\/\//i.test(video.src) ? embedUrl(video.src) : undefined;
       const posterMedia = video.poster ? getResponsiveMedia(project.slug, video.poster) : undefined;
       const poster = posterMedia?.variants.at(-1)?.src ? assetUrl(posterMedia.variants.at(-1)!.src) : undefined;
+      const ratio = posterMedia ? `${posterMedia.width} / ${posterMedia.height}` : undefined;
       return (
         <figure class="project-media__figure project-media__video">
           {localVideo ? (
-            <video src={assetUrl(localVideo)} poster={poster} controls muted loop playsinline preload="none" aria-label={video.alt}>
+            <video src={assetUrl(localVideo)} poster={poster} style={ratio ? `aspect-ratio: ${ratio}` : undefined} controls muted loop playsinline preload="none" aria-label={video.alt}>
             </video>
           ) : embed ? (
             <iframe src={embed} title={video.alt} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -77,4 +79,5 @@ function embedUrl(value: string): string | undefined {
       );
     })}
   </div>
+  )}
 </section>
