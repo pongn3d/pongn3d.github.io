@@ -14,10 +14,10 @@ results: ["1st Place — NTU Hackathon 2026"]
 spec: "1st Place · NTU Hackathon 2026"
 tools: ["Hardware sensors", "Gamified therapy", "Body-shift and reach interaction"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "A participant at a laptop among other attendees in a busy hackathon room."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "Two people on a small stage with a laptop and orange boxes."
   - src: "photo-2.jpg"
     alt: "[TODO: Describe photo-2.jpg]"
 videos:

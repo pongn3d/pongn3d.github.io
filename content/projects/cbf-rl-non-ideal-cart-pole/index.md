@@ -13,12 +13,12 @@ results: []
 spec: "Isaac Lab · PPO · Post-CBF vs Reward-CBF"
 tools: ["Isaac Lab", "PPO", "Control Barrier Functions"]
 cover: "cover.jpg"
-coverAlt: "[TODO: Describe cover.jpg]"
+coverAlt: "Learning-performance plots comparing real and ideal actuators for the baseline, Post-CBF, Reward-CBF and Reward+Jerk methods."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "Slide on safety challenges in reinforcement learning: exploration risk, actuator limits and formal safety."
   - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
+    alt: "Slide on training performance and convergence, with learning curves and notes for each method."
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"

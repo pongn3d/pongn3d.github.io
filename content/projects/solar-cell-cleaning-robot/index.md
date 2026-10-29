@@ -16,9 +16,9 @@ cover: "cover.jpg"
 coverAlt: "A person standing behind the solar cell cleaning robot's frame and brush in a workshop."
 photos:
   - src: "photo-1.jpg"
-    alt: "[TODO: Describe photo-1.jpg]"
+    alt: "Overhead view of the cleaning robot rail and electronics on a workshop floor, with a person sitting beside it."
   - src: "photo-2.jpg"
-    alt: "[TODO: Describe photo-2.jpg]"
+    alt: "Rows of solar panels at a solar farm under a blue sky."
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
