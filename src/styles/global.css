@@ -1861,6 +1861,23 @@ a:focus-visible {
   color: var(--terra-text);
 }
 
+.achievement-entry--photo {
+  grid-template-columns: 74px minmax(0, 1fr) minmax(190px, 300px);
+  column-gap: clamp(20px, 4vw, 48px);
+}
+
+.achievement-entry__photo {
+  grid-column: 3;
+  grid-row: 1;
+  margin: 0;
+}
+
+.achievement-entry__photo .media-image,
+.achievement-entry__photo .media-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
 /* About, scores and education */
 .about-intro {
   display: grid;
@@ -2156,6 +2173,13 @@ a:focus-visible {
   .achievement-entry {
     grid-template-columns: 54px minmax(0, 1fr);
     gap: 15px;
+  }
+
+  .achievement-entry__photo {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: 320px;
+    margin-top: 6px;
   }
 }
 

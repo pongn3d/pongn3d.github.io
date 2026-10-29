@@ -90,7 +90,7 @@ export const ExperienceSchema = z.object({
   startDate: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/), endDate: z.string().regex(/^(present|\d{4}-(0[1-9]|1[0-2]))$/), summary: z.string().min(1),
   contributions: z.array(z.string()).min(1), metrics: z.array(z.string()), recognition: z.array(z.string()).default([]),
 });
-export const AchievementSchema = z.object({ slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), title: z.string().min(1), date: z.string().min(1), event: z.string().min(1), result: z.string().optional(), summary: z.string().min(1) });
+export const AchievementSchema = z.object({ slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), title: z.string().min(1), date: z.string().min(1), event: z.string().min(1), result: z.string().optional(), summary: z.string().min(1), photo: z.object({ src: z.string().min(1), alt: z.string().min(1) }).optional() });
 const SkillGroupSchema = z.object({ name: z.string().min(1), items: z.array(z.string().min(1)).min(1) });
 export const AboutSchema = z.object({
   bio: z.string().min(1), profilePhoto: z.object({ src: safeImageFilename, alt: z.string().min(1) }), degree: z.string().min(1), institution: z.string().min(1), educationDates: z.string().min(1),

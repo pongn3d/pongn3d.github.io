@@ -43,6 +43,7 @@ The source images/videos are project files and should be committed with the cont
 
 - Add one `content/experience/<slug>.md` per role. Use the fields documented in the existing records: role/title, organization, `startDate`, `endDate`, summary, contributions, optional recognition/metrics and related project slugs. Projects that point to that experience slug populate its related-project list automatically.
 - Add one `content/achievements/<slug>.md` per award or competition entry. Point it at the related project slug; the corresponding project’s relationship is validated and linked automatically. Robocon, the NTU Hackathon and Jinpao records are achievements/experience, not extra project records.
+- To show a photo on the right of an achievement, put the image beside its `.md` file (for example `content/achievements/ntu-hackathon-2026.jpg`) and add `photo:` with `src` and `alt` to its frontmatter. Entries without a photo are unchanged. The build resizes the image automatically.
 
 Zod schemas and cross-link checks live in `src/lib/schemas.ts` and `src/lib/content.ts`. The `_template` folder is excluded from the 16-project count and from generated routes. Invalid required fields, duplicate slugs and broken project/experience/achievement relationships stop the build with a clear error.
 

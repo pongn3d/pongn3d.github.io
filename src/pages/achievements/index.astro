@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { readAchievements, readProjects } from '../../lib/content';
+import MediaImage from '../../components/MediaImage.astro';
+import { getResponsiveMedia, readAchievements, readProjects } from '../../lib/content';
 import { site } from '../../lib/schemas';
 import { assetUrl } from '../../lib/url';
 
@@ -19,7 +20,7 @@ const projects = readProjects().map(({ project }) => project);
       {achievements.map((achievement, index) => {
         const related = projects.filter((project) => project.achievement === achievement.slug);
         return (
-          <li id={achievement.slug} class="achievement-entry">
+          <li id={achievement.slug} class:list={["achievement-entry", { "achievement-entry--photo": achievement.photo }]}>
             <span class="achievement-entry__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <article>
               <p class="eyebrow">{achievement.date}</p>
@@ -32,6 +33,11 @@ const projects = readProjects().map(({ project }) => project);
                 </div>
               )}
             </article>
+            {achievement.photo && (
+              <figure class="achievement-entry__photo">
+                <MediaImage media={getResponsiveMedia(`achievement-${achievement.slug}`, achievement.photo.src)} source={achievement.photo.src} alt={achievement.photo.alt} placeholderLabel={site.pages.project.photoPlaceholder} sizes="(max-width: 900px) 100vw, 300px" />
+              </figure>
+            )}
           </li>
         );
       })}

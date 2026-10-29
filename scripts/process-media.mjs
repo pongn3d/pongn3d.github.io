@@ -7,6 +7,7 @@ import sharp from 'sharp';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const projectsRoot = path.join(root, 'content', 'projects');
+const achievementsRoot = path.join(root, 'content', 'achievements');
 const aboutPath = path.join(root, 'content', 'about.md');
 const generatedRoot = path.join(root, 'public', 'generated-media');
 const manifest = { projects: {} };
@@ -104,6 +105,21 @@ if (existsSync(aboutPath)) {
     if (existsSync(sourcePath)) entry.images[photoName] = await processImage('about', photoName, sourcePath);
   }
   manifest.projects.about = entry;
+}
+
+// Achievement photos sit beside their .md file and are keyed as `achievement-<slug>`.
+if (existsSync(achievementsRoot)) {
+  for (const file of (await readdir(achievementsRoot)).filter((name) => name.endsWith('.md')).sort()) {
+    const markdownPath = path.join(achievementsRoot, file);
+    const { data } = matter(await readFile(markdownPath, 'utf8'));
+    const photoName = data.photo?.src;
+    if (typeof photoName !== 'string') continue;
+    assertLocalFilename(photoName, markdownPath, imageNamePattern);
+    const sourcePath = path.join(achievementsRoot, photoName);
+    if (!existsSync(sourcePath)) continue;
+    const key = `achievement-${file.replace(/\.md$/, '')}`;
+    manifest.projects[key] = { images: { [photoName]: await processImage(key, photoName, sourcePath) }, videos: {} };
+  }
 }
 
 const manifestPath = path.join(generatedRoot, 'manifest.json');
