@@ -1,7 +1,7 @@
 ---
 slug: "teaching-assistant-fibo-kmutt"
 title: "Teaching Assistant"
-organization: "FIBO, KMUTT"
+organization: "Institute of Field Robotics, KMUTT"
 startDate: "2024-08"
 endDate: "2026-05"
 summary: "Supported engineering courses and guided student teams through design, modeling and laboratory work."

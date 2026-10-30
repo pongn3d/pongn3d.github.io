@@ -6,7 +6,7 @@ tags: ["Research", "Bio-Inspired"]
 startDate: "2026-02"
 endDate: "present"
 role: "Research Intern"
-context: "Bio-Inspired Robotics & Neural Engineering Laboratory, VISTEC, Rayong, Thailand"
+context: "Bio-Inspired Robotics & Neural Engineering Lab, VISTEC, Rayong, Thailand"
 featured: true
 featuredOrder: 1
 summary: "A bio-inspired amphibious robot that walks on land and generates passive asymmetric force for swimming through morphological computation."

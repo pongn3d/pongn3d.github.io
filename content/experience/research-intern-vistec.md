@@ -1,7 +1,7 @@
 ---
 slug: "research-intern-vistec"
 title: "Research Intern"
-organization: "Bio-Inspired Robotics & Neural Engineering Laboratory, VISTEC"
+organization: "Bio-Inspired Robotics & Neural Engineering Lab, VISTEC"
 location: "Rayong, Thailand"
 startDate: "2026-02"
 endDate: "present"
