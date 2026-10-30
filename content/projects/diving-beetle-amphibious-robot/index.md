@@ -1,7 +1,7 @@
 ---
 title: "Diving Beetle-Inspired Amphibious Robot"
 slug: "diving-beetle-amphibious-robot"
-category: "Research & Soft Robotics"
+category: "Research"
 tags: ["Research", "Bio-Inspired"]
 startDate: "2026-02"
 endDate: "present"

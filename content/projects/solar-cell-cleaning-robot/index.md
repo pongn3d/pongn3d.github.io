@@ -1,7 +1,7 @@
 ---
 title: "Solar Cell Cleaning Robot"
 slug: "solar-cell-cleaning-robot"
-category: "Research & Soft Robotics"
+category: "Research"
 tags: ["Research"]
 startDate: "2025-06"
 endDate: "2025-11"

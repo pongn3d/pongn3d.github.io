@@ -1,7 +1,7 @@
 ---
 title: "Electroosmotic Soft Actuator"
 slug: "electroosmotic-soft-actuator"
-category: "Research & Soft Robotics"
+category: "Research"
 tags: ["Course Project", "Research"]
 startDate: "2026-01"
 endDate: "2026-05"
