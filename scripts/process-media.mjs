@@ -13,6 +13,7 @@ const generatedRoot = path.join(root, 'public', 'generated-media');
 const manifest = { projects: {} };
 const imageNamePattern = /^[A-Za-z0-9][A-Za-z0-9._ -]*\.(?:jpe?g|png|webp)$/i;
 const videoNamePattern = /^[A-Za-z0-9][A-Za-z0-9._ -]*\.mp4$/i;
+const maxImageWidth = 2000;
 let imageCount = 0;
 let videoCount = 0;
 
@@ -25,8 +26,10 @@ function assertLocalFilename(value, pathHint, pattern) {
 async function processImage(slug, sourceName, sourcePath) {
   const metadata = await sharp(sourcePath).metadata();
   if (!metadata.width || !metadata.height) throw new Error(`Could not read image dimensions for ${sourcePath}.`);
-  const requestedWidths = [480, 960, 1440].filter((width) => width < metadata.width);
-  const widths = [...new Set([...requestedWidths, metadata.width])].sort((a, b) => a - b);
+  // Originals can be huge (4000px+ camera photos), so the largest web copy is capped to keep the site light.
+  const largestWidth = Math.min(metadata.width, maxImageWidth);
+  const requestedWidths = [480, 960, 1440].filter((width) => width < largestWidth);
+  const widths = [...new Set([...requestedWidths, largestWidth])].sort((a, b) => a - b);
   const variants = [];
   const destinationFolder = path.join(generatedRoot, slug);
   await mkdir(destinationFolder, { recursive: true });
