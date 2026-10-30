@@ -6,10 +6,10 @@ tags: ["Research", "Bio-Inspired"]
 startDate: "2026-02"
 endDate: "present"
 role: "Research Intern"
-context: "Bio-Inspired Robotics & Neural Engineering Lab, VISTEC, Rayong"
+context: "Bio-Inspired Robotics & Neural Engineering Laboratory, VISTEC, Rayong, Thailand"
 featured: true
 featuredOrder: 1
-summary: "Passive drag amplification and compliant locomotion for an amphibious robot."
+summary: "A bio-inspired amphibious robot that walks on land and generates passive asymmetric force for swimming through morphological computation."
 results: []
 spec: "2-DOF yaw/roll · folding-fan drag amplification"
 tools: ["Cable-driven differential", "Kinematic modeling", "Waterproof motor modules"]
@@ -27,14 +27,16 @@ videos:
 experience: "research-intern-vistec"
 relatedProjects: ["cable-driven-differential-mechanism"]
 overview: >-
-  Research on passive mechanisms for drag amplification and compliant locomotion. The design targets underwater propulsion while retaining load-bearing ability on land.
+  Research on bio-inspired locomotion for amphibious robots, focusing on terrestrial walking and passive asymmetric force generation for underwater swimming through morphological computation. The design targets underwater propulsion while retaining load-bearing ability on land.
 whatIDid:
-  - "Developed a lightweight cable-driven differential transmission for 2-DOF yaw and roll, reducing distal leg inertia."
+  - "Designed a cable-driven differential transmission enabling 2-DOF yaw and roll actuation while reducing distal leg inertia."
+  - "Designed and integrated the overall robot architecture, including mechanical structures and electronics enclosures."
+  - "Developed and validated waterproof motor modules and connector interfaces for underwater operation."
+  - "Contributed to the research and authored a scientific manuscript submitted to an international robotics conference."
   - "Designed a folding-fan drag-amplification mechanism and compliant distal links."
   - "Developed kinematic models for asymmetric drag."
-  - "Integrated waterproof motor modules, sealing and connectors."
 process:
   - "Evaluated passive drag amplification and compliant locomotion concepts."
-  - "Built and tested submerged actuation with waterproof motor modules and sealed connections."
+  - "Validated the waterproof motor modules and connector interfaces through submerged actuation tests."
 learning: "[TODO: Add what I learned.]"
 ---
