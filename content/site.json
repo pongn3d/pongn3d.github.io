@@ -48,6 +48,10 @@
       "href": "/about/"
     },
     {
+      "label": "Resume",
+      "href": "/resume/"
+    },
+    {
       "label": "Contact",
       "href": "/contact/",
       "variant": "contact"
