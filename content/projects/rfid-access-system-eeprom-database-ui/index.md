@@ -8,7 +8,7 @@ endDate: "2026-01"
 role: "[TODO: Add role]"
 context: "Embedded Systems course"
 featured: true
-featuredOrder: 4
+featuredOrder: 5
 summary: "An STM32 access system with UID authentication, EEPROM user management and a button-driven LCD interface."
 results: []
 spec: "STM32 · MFRC522 · EEPROM"

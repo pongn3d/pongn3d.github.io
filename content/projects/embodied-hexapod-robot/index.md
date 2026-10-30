@@ -8,7 +8,7 @@ endDate: "2026-05"
 role: "Hardware Engineer — sensor design and embedded electronics"
 context: "Physical AI course"
 featured: true
-featuredOrder: 3
+featuredOrder: 4
 summary: "A three-axis foot-force module and central electrical system for a physical hexapod."
 results: []
 spec: "3-axis foot-force sensing · custom PCBs"

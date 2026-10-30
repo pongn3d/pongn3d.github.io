@@ -8,7 +8,7 @@ endDate: "2026-05"
 role: "[TODO: Add role]"
 context: "Sensor & Actuator Development course"
 featured: true
-featuredOrder: 2
+featuredOrder: 3
 summary: "A compliant actuator driven by electroosmotic flow rather than a mechanical transmission."
 results: ["44.2 mm displacement", "0.57 N force"]
 spec: "44.2 mm displacement · 0.57 N force"

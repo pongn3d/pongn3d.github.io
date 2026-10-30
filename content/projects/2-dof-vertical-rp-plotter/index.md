@@ -8,7 +8,7 @@ endDate: "2025-06"
 role: "Project Lead — mechanical design & control"
 context: "Industrial Automation course"
 featured: true
-featuredOrder: 5
+featuredOrder: 6
 summary: "A two-axis plotter for drawing text and images from planned trajectories."
 results: ["0.2 mm linear accuracy", "0.5° rotational accuracy", "600 mm/s linear velocity"]
 spec: "0.2 mm · 0.5° · 600 mm/s"

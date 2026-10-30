@@ -7,7 +7,8 @@ startDate: "2026-04"
 endDate: "2026-05"
 role: "[TODO: Add role]"
 context: "Open Topics course"
-featured: false
+featured: true
+featuredOrder: 2
 summary: "A lightweight, backdrivable transmission producing yaw and roll from two coupled actuators."
 results: []
 spec: "2-DOF yaw/roll · lightweight · backdrivable"

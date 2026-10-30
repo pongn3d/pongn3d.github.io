@@ -7,8 +7,7 @@ startDate: "2026-05"
 endDate: "2026-05"
 role: "[TODO: Add role]"
 context: "NTU Hackathon"
-featured: true
-featuredOrder: 6
+featured: false
 summary: "A sensor-based, gamified home rehabilitation system inspired by floating markets."
 results: ["1st Place — NTU Hackathon 2026"]
 spec: "1st Place · NTU Hackathon 2026"
