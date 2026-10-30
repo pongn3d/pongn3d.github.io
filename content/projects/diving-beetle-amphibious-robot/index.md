@@ -11,7 +11,7 @@ featured: true
 featuredOrder: 1
 summary: "A bio-inspired amphibious robot that walks on land and generates passive asymmetric force for swimming through morphological computation."
 results: []
-spec: "2-DOF yaw/roll · folding-fan drag amplification"
+spec: "2-DOF yaw/roll · cable-driven differential · morphological computation"
 tools: ["Cable-driven differential", "Kinematic modeling", "Waterproof motor modules"]
 cover: "cover.png"
 coverAlt: "CAD render of the amphibious robot: a transparent central electronics cylinder with four red motor modules and black legs."
@@ -33,10 +33,8 @@ whatIDid:
   - "Designed and integrated the overall robot architecture, including mechanical structures and electronics enclosures."
   - "Developed and validated waterproof motor modules and connector interfaces for underwater operation."
   - "Contributed to the research and authored a scientific manuscript submitted to an international robotics conference."
-  - "Designed a folding-fan drag-amplification mechanism and compliant distal links."
-  - "Developed kinematic models for asymmetric drag."
 process:
-  - "Evaluated passive drag amplification and compliant locomotion concepts."
+  - "Investigated terrestrial walking and passive asymmetric force generation for underwater swimming."
   - "Validated the waterproof motor modules and connector interfaces through submerged actuation tests."
 learning: "[TODO: Add what I learned.]"
 ---
