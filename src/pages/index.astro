@@ -4,13 +4,16 @@ import FeaturedProjects from '../components/FeaturedProjects.astro';
 import Sculpture from '../components/Sculpture.astro';
 import { readFeaturedProjects } from '../lib/content';
 import { site } from '../lib/schemas';
+import { getResume } from '../lib/resume';
 
 const featuredProjects = readFeaturedProjects();
+const resume = getResume();
 ---
 <BaseLayout>
   <main id="main-content">
     <section class="hero page-wrap" aria-labelledby="hero-heading">
       <div class="hero__copy" id="about-intro">
+        <p class="hero__name">{site.name}</p>
         <p class="eyebrow hero__eyebrow">{site.hero.eyebrow}</p>
         <h1 id="hero-heading">
           <span>{site.hero.headlineLineOne}</span>
@@ -22,6 +25,11 @@ const featuredProjects = readFeaturedProjects();
           <span class="hero__current-dash" aria-hidden="true">—</span>
           <span>{site.hero.currentlyRole}</span>
         </p>
+        {resume && (
+          <p class="hero__actions">
+            <a class="resume-download__button" href={resume.href} download>{resume.label}<span class="resume-download__size">PDF · {resume.size}</span></a>
+          </p>
+        )}
         <a class="hero__scroll-link" href="#selected-work">
           <span class="hero__scroll-line" aria-hidden="true"></span>
           <span>{site.hero.scrollLabel}</span>
