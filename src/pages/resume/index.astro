@@ -1,15 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
+import { existsSync, statSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { site } from '../../lib/schemas';
 import { assetUrl } from '../../lib/url';
+import { isPlaceholder } from '../../lib/placeholder';
 const page = site.pages.resume;
+const resumePath = page.file ? resolve(process.cwd(), 'content', page.file) : undefined;
+const hasResume = Boolean(resumePath && existsSync(resumePath));
+const resumeHref = hasResume && page.file ? assetUrl(`/generated-media/files/${encodeURIComponent(page.file)}`) : undefined;
+const resumeSize = hasResume && resumePath ? `${Math.max(1, Math.round(statSync(resumePath).size / 1024))} KB` : '';
 ---
 <BaseLayout title={page.title} description={page.description}>
   <main id="main-content" class="page-wrap content-page resume-page">
     <PageHeader eyebrow={page.eyebrow} heading={page.heading} />
     <section class="resume-placeholder" aria-label={page.heading}>
-      <p class="eyebrow">{page.downloadPlaceholder}</p>
+      {resumeHref ? (
+        <p class="resume-download">
+          <a class="resume-download__button" href={resumeHref} download>{page.downloadLabel}<span class="resume-download__size">PDF · {resumeSize}</span></a>
+          <a class="text-link" href={resumeHref} target="_blank" rel="noopener">Open in a new tab<span aria-hidden="true"> ↗</span></a>
+        </p>
+      ) : !isPlaceholder(page.downloadPlaceholder) && <p class="eyebrow">{page.downloadPlaceholder}</p>}
       <p class="resume-placeholder__note">{page.contactLabel}</p>
       <a class="text-link resume-placeholder__link" href={assetUrl('/contact/')}>{site.pages.contact.heading}<span aria-hidden="true"> ↗</span></a>
     </section>

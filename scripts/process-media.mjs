@@ -122,6 +122,18 @@ if (existsSync(achievementsRoot)) {
   }
 }
 
+// A resume PDF named in content/site.json (pages.resume.file) is copied beside the generated media.
+const siteSettings = JSON.parse(await readFile(path.join(root, 'content', 'site.json'), 'utf8'));
+const resumeFile = siteSettings.pages?.resume?.file;
+if (typeof resumeFile === 'string' && resumeFile.trim()) {
+  assertLocalFilename(resumeFile, 'content/site.json (pages.resume.file)', /^[A-Za-z0-9][A-Za-z0-9._ -]*\.pdf$/i);
+  const resumeSource = path.join(root, 'content', resumeFile);
+  if (existsSync(resumeSource)) {
+    await mkdir(path.join(generatedRoot, 'files'), { recursive: true });
+    await copyFile(resumeSource, path.join(generatedRoot, 'files', resumeFile));
+  }
+}
+
 const manifestPath = path.join(generatedRoot, 'manifest.json');
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 console.log(`Prepared local media: ${imageCount} image(s), ${videoCount} MP4 video(s).`);

@@ -1,5 +1,6 @@
 ---
 import type { SiteSettings } from '../lib/schemas';
+import { isPlaceholder } from '../lib/placeholder';
 
 interface Props {
   projectNumber: string;
@@ -12,21 +13,29 @@ interface Props {
 
 const { projectNumber, role, tools, dates, spec, site } = Astro.props;
 const labels = site.pages.project;
+const showRole = !isPlaceholder(role);
+const showTools = tools.some((tool) => !isPlaceholder(tool));
+// Unfilled fields are hidden, so the remaining columns share the row.
+const columns = ['0.78fr', showRole && '1.2fr', showTools && '1.4fr', '1fr'].filter(Boolean).join(' ');
 ---
 <section class="project-title-block" aria-label={labels.contextLabel}>
-  <dl class="project-title-block__fields">
+  <dl class="project-title-block__fields" style={`--title-columns: ${columns}`}>
     <div class="project-title-block__field project-title-block__field--number">
       <dt>{labels.projectNumberLabel}</dt>
       <dd>{projectNumber}</dd>
     </div>
-    <div class="project-title-block__field">
-      <dt>{labels.roleLabel}</dt>
-      <dd>{role}</dd>
-    </div>
-    <div class="project-title-block__field">
-      <dt>{labels.toolsLabel}</dt>
-      <dd>{tools.length ? tools.join(' · ') : labels.toolsPlaceholder}</dd>
-    </div>
+    {showRole && (
+      <div class="project-title-block__field">
+        <dt>{labels.roleLabel}</dt>
+        <dd>{role}</dd>
+      </div>
+    )}
+    {showTools && (
+      <div class="project-title-block__field">
+        <dt>{labels.toolsLabel}</dt>
+        <dd>{tools.join(' · ')}</dd>
+      </div>
+    )}
     <div class="project-title-block__field">
       <dt>{labels.datesLabel}</dt>
       <dd>{dates}</dd>

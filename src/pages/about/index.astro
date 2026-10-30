@@ -4,6 +4,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import MediaImage from '../../components/MediaImage.astro';
 import { getResponsiveMedia, readAbout } from '../../lib/content';
 import { site } from '../../lib/schemas';
+import { isPlaceholder } from '../../lib/placeholder';
 
 const page = site.pages.about;
 const profile = readAbout();
@@ -13,7 +14,7 @@ const photo = getResponsiveMedia('about', profile.profilePhoto.src);
   <main id="main-content" class="page-wrap content-page about-page">
     <PageHeader eyebrow={page.eyebrow} heading={page.heading} intro={page.intro} />
     <section class="about-intro" aria-label={page.heading}>
-      <p class="about-intro__bio todo-placeholder">{profile.bio}</p>
+      {!isPlaceholder(profile.bio) && <p class="about-intro__bio">{profile.bio}</p>}
       <figure class="about-intro__photo">
         <MediaImage media={photo} source={profile.profilePhoto.src} alt={profile.profilePhoto.alt} placeholderAlt={profile.profilePhoto.alt} placeholderLabel={page.profilePlaceholder} sizes="(max-width: 700px) 100vw, 38vw" />
       </figure>

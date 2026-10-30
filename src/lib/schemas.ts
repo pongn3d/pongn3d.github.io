@@ -33,7 +33,7 @@ export const SiteSchema = z.object({
     work: WorkPageSchema, project: ProjectPageSchema,
     experience: GeneralPageSchema, achievements: GeneralPageSchema,
     about: GeneralPageSchema.extend({ educationHeading: z.string().min(1), courseworkHeading: z.string().min(1), skillsHeading: z.string().min(1), languagesHeading: z.string().min(1), scoresHeading: z.string().min(1), profilePlaceholder: z.string().min(1), gpaLabel: z.string().min(1), cumulativeGpaLabel: z.string().min(1), ieltsLabel: z.string().min(1), toeicLabel: z.string().min(1), overallLabel: z.string().min(1), listeningLabel: z.string().min(1), readingLabel: z.string().min(1), writingLabel: z.string().min(1), speakingLabel: z.string().min(1) }),
-    resume: GeneralPageSchema.extend({ downloadPlaceholder: z.string().min(1), contactLabel: z.string().min(1) }),
+    resume: GeneralPageSchema.extend({ downloadPlaceholder: z.string().min(1), contactLabel: z.string().min(1), file: z.string().optional(), downloadLabel: z.string().default('Download resume (PDF)') }),
     contact: GeneralPageSchema.extend({ emailLabel: z.string().min(1), linkedinLabel: z.string().min(1), githubLabel: z.string().min(1) }),
     notFound: GeneralPageSchema.extend({ homeLabel: z.string().min(1), workLabel: z.string().min(1) }),
   }),

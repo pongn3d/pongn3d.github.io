@@ -723,7 +723,7 @@ a:focus-visible {
 
 .project-title-block__fields {
   display: grid;
-  grid-template-columns: 0.78fr 1.2fr 1.4fr 1fr;
+  grid-template-columns: var(--title-columns, 0.78fr 1.2fr 1.4fr 1fr);
   margin: 0;
 }
 
@@ -2167,6 +2167,38 @@ a:focus-visible {
 
 .resume-placeholder__link {
   margin-top: 15px;
+}
+
+.resume-download {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin: 0;
+}
+
+.resume-download__button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 14px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--brown);
+  color: var(--ivory);
+  font-size: 14px;
+  transition: background-color 180ms ease;
+}
+
+.resume-download__button:hover {
+  background: var(--terra-deep);
+}
+
+.resume-download__size {
+  color: rgb(245 241 233 / 72%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
 }
 
 .contact-list {

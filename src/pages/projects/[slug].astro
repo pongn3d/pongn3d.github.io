@@ -5,6 +5,7 @@ import ProjectMedia from '../../components/ProjectMedia.astro';
 import { formatDateRange, getResponsiveMedia, readAchievements, readExperiences, readProjects, sortProjectsNewest } from '../../lib/content';
 import { site } from '../../lib/schemas';
 import { assetUrl } from '../../lib/url';
+import { isPlaceholder } from '../../lib/placeholder';
 
 const allProjects = sortProjectsNewest(readProjects().map(({ project }) => project));
 const experiences = readExperiences();
@@ -82,11 +83,11 @@ const socialImage = coverMedia?.variants.at(-1)?.src ?? site.seo.openGraphImage;
         )}
       </section>
 
-      <section class="project-detail__section" aria-labelledby="project-learning-heading">
+      {!isPlaceholder(project.learning) && <section class="project-detail__section" aria-labelledby="project-learning-heading">
         <p class="eyebrow">05 / {page.learningHeading}</p>
         <h2 id="project-learning-heading">{page.learningHeading}</h2>
-        <p class:list={['project-detail__learning', project.learning.startsWith('[TODO:') ? 'todo-placeholder' : '']}>{project.learning}</p>
-      </section>
+        <p class="project-detail__learning">{project.learning}</p>
+      </section>}
     </div>
 
     {(linkedExperience || linkedAchievement || relatedProjects.length > 0) && (
