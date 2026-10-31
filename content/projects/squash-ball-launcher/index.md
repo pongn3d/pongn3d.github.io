@@ -18,7 +18,7 @@ photos:
   - src: "photo-1.jpg"
     alt: "Front isometric view of the launcher."
   - src: "photo-2.jpg"
-    alt: "The launcher's button signal inlet and wiring inside a clear electronics enclosure."
+    alt: "The launcher's button signal input and wiring inside a clear electronics enclosure."
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
