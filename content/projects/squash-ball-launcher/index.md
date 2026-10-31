@@ -13,16 +13,16 @@ results: ["95% launch accuracy"]
 spec: "95% launch accuracy · camera-tracked testing"
 tools: ["Dual lead screw", "Gear transmission", "Camera-tracked testing"]
 cover: "cover.jpg"
-coverAlt: "The squash ball launcher's aluminium frame tilted on the floor, showing the lead screws."
+coverAlt: "The squash ball launcher with its dual lead screw mechanism."
 photos:
   - src: "photo-1.jpg"
-    alt: "Side view of the launcher frame showing the gear transmission and electronics at its base."
+    alt: "Front isometric view of the launcher."
   - src: "photo-2.jpg"
-    alt: "The launcher's power inlet and wiring inside a clear electronics enclosure."
+    alt: "The launcher's button inlet and wiring inside a clear electronics enclosure."
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "Video of the squash ball launcher set up in front of a target board."
+    alt: "Video of the squash ball launcher firing at the target board."
 overview: >-
   A squash-ball launcher for the Science in Motion course, using a dual lead screw and gear transmission to compress a spring.
 whatIDid:

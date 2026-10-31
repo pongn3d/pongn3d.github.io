@@ -21,10 +21,10 @@ videos:
     alt: "Simulation of the 2-R planar pendulum falling freely under gravity (forward dynamics)."
   - src: "video-2.mp4"
     poster: "video-2-poster.jpg"
-    alt: "Simulation of the 2-R arm following a straight-line path using inverse kinematics."
+    alt: "Simulation of the 2-R arm following a straight-line path using inverse kinematics and inverse dynamics."
   - src: "video-3.mp4"
     poster: "video-3-poster.jpg"
-    alt: "Simulation of the 2-R arm rejecting an external torque disturbance."
+    alt: "Simulation of the 2-R arm recovering after an external force disturbance."
 overview: >-
   A Kinematics course project modeling and simulating a two-link planar pendulum, with results validated against Simscape Multibody.
 whatIDid:

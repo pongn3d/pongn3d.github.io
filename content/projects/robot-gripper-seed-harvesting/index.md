@@ -13,10 +13,10 @@ results: []
 spec: "Servo-driven · synchronized fingers · rubberized grips"
 tools: ["Servo", "Geared synchronized fingers", "Rubberized grips"]
 cover: "cover.jpg"
-coverAlt: "A servo-driven gripper with blue and yellow printed fingers and gear linkage mounted on the robot."
+coverAlt: "A servo-driven gripper with synchronized gears."
 photos:
   - src: "photo-1.jpg"
-    alt: "Top view of the competition robot with 3D-printed parts, wiring and mounted mechanisms."
+    alt: "Top view of the competition robot with the first version of the gripper mounted."
 videos: []
 experience: "head-mechanical-abu-robocon"
 achievement: "abu-robocon-2024"

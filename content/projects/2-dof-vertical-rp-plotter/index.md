@@ -14,14 +14,14 @@ results: ["0.2 mm linear accuracy", "0.5° rotational accuracy", "600 mm/s linea
 spec: "0.2 mm · 0.5° · 600 mm/s"
 tools: ["SOLIDWORKS", "PID tuning", "Trajectory planning"]
 cover: "cover.jpg"
-coverAlt: "The 2-DOF vertical RP plotter on a table beside its grey control box with buttons and indicator lights."
+coverAlt: "The 2-DOF vertical RP plotter beside its control box."
 photos:
   - src: "photo-1.jpg"
-    alt: "Close-up of the plotter's red end effector, linear axis and motor on its base plate."
+    alt: "Close-up of the plotter's mechanical assembly."
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "Video of the plotter arm operating in front of a whiteboard."
+    alt: "Video of the plotter arm writing text."
 overview: >-
   A two-degree-of-freedom vertical plotter developed for the Industrial Automation course, designed to plot text and images along planned trajectories.
 whatIDid:

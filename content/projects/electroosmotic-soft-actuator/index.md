@@ -14,12 +14,12 @@ results: ["44.2 mm displacement", "0.57 N force"]
 spec: "44.2 mm displacement · 0.57 N force"
 tools: ["Electroosmotic flow", "Compliant membrane", "Custom acrylic housing"]
 cover: "cover.png"
-coverAlt: "The transparent electroosmotic actuator on a table beside a bench power supply."
+coverAlt: "The electroosmotic actuator beside a bench power supply."
 photos: []
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "Demonstration of the electroosmotic actuator running from a bench power supply."
+    alt: "Demonstration of the electroosmotic actuator moving its soft membrane."
   - src: "video-2.mp4"
     poster: "video-2-poster.jpg"
     alt: "Test of the electroosmotic actuator on a digital scale."

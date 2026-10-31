@@ -14,10 +14,10 @@ results: []
 spec: "3-axis foot-force sensing · custom PCBs"
 tools: ["Load cells", "FEA", "Custom PCB design"]
 cover: "cover.jpg"
-coverAlt: "A multi-jointed robot leg on a gantry rig above artificial grass."
+coverAlt: "A 3-DOF robot leg on a gantry test rig."
 photos:
   - src: "photo-1.jpg"
-    alt: "Finite element analysis of the foot force sensor under force from the left, left-front, back and below."
+    alt: "Finite element analysis of the foot force sensor."
 videos: []
 overview: >-
   Hardware engineering for a physical-AI hexapod, spanning a three-axis foot-force sensing module and the robot's central electrical system.

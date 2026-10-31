@@ -13,10 +13,10 @@ results: []
 spec: "Two functions · basket holding + flag pulling"
 tools: ["CAD", "Prototyping", "Force and load calculations"]
 cover: "cover.jpg"
-coverAlt: "A hand holding the pink 3D-printed gripper with its pair of finger mechanisms."
+coverAlt: "The final version of the gripper, with its pair of finger mechanisms and feedback input."
 photos:
   - src: "photo-1.jpg"
-    alt: "A purple 3D-printed gripper with rollers and guide rods on a white table."
+    alt: "The first version of the gripper, with rollers and a linkage mechanism."
 videos: []
 achievement: "jinpao-automation-contest"
 overview: >-

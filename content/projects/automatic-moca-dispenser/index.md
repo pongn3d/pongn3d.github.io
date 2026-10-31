@@ -13,10 +13,10 @@ results: ["Reduced worker fatigue", "Eliminated measurement errors"]
 spec: "Weight-ratio dispensing · load cells · Arduino"
 tools: ["SOLIDWORKS", "Load cells", "Arduino", "Sensors"]
 cover: "cover.jpg"
-coverAlt: "The automatic MOCA dispenser frame with tubing and a controller box beside a digital scale."
+coverAlt: "The automatic MOCA dispenser with its controller box."
 photos:
   - src: "photo-1.jpg"
-    alt: "Wide view of the MOCA dispenser frame with its tubing and container in a workshop."
+    alt: "Rear view of the MOCA dispenser showing its fluid pump system."
 videos: []
 overview: >-
   A Robotics Exploration course project to automatically dispense and mix MOCA and polyurethane by weight ratio, informed by factory-worker feedback.

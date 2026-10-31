@@ -14,20 +14,20 @@ results: []
 spec: "2-DOF yaw/roll · lightweight · backdrivable"
 tools: ["Cable-driven transmission", "Kinematic validation", "Prototype testing"]
 cover: "cover.jpg"
-coverAlt: "A white 3D-printed cable-driven joint attached to a red motor on a desk mat."
+coverAlt: "The cable-driven differential joint attached to its motors."
 photos:
   - src: "photo-1.jpg"
-    alt: "The yellow 3D-printed cable-driven differential prototype with angle scales marked on its discs."
+    alt: "The manual-input cable-driven differential prototype with marked angle scales."
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "Demonstration of the preliminary yellow 3D-printed cable-driven differential, held in hand."
+    alt: "Demonstration of the manual-input cable-driven differential prototype."
   - src: "video-2.mp4"
     poster: "video-2-poster.jpg"
-    alt: "The white cable-driven differential assembly with wiring on a wooden bench."
+    alt: "Initial test of the cable-driven differential assembly."
   - src: "video-3.mp4"
     poster: "video-3-poster.jpg"
-    alt: "Portrait video of the white cable-driven joint with its red motor on a desk mat."
+    alt: "The cable-driven differential integrated with waterproof motors."
 experience: "research-intern-vistec"
 relatedProjects: ["diving-beetle-amphibious-robot"]
 overview: >-

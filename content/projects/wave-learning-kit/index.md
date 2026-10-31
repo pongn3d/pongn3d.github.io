@@ -13,14 +13,14 @@ results: ["Tested with teachers and students at 4 schools"]
 spec: "4 schools · teacher/student testing"
 tools: ["Hardware structure", "Electronics", "Power design", "Iterative design thinking"]
 cover: "cover.jpg"
-coverAlt: "The Wave Learning Kit with a lit screen showing a sine wave above a row of green buttons."
+coverAlt: "The Wave Learning Kit with a lit screen showing the wave-component adjustment page."
 photos:
   - src: "photo-1.jpg"
-    alt: "Students in purple shirts trying the Wave Learning Kit at a demo day booth."
+    alt: "Students trying the Wave Learning Kit at a demo-day booth."
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "Video of hands pressing the Wave Learning Kit's buttons while its screen changes."
+    alt: "Demonstration of the Wave Learning Kit."
 overview: >-
   An educational hardware kit for teaching wave mechanics, developed through iterative design thinking and tested with teachers and students across four schools.
 whatIDid:

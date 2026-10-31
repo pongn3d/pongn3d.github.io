@@ -13,12 +13,12 @@ results: []
 spec: "Two brush-mechanism iterations · transporter + cleaner subsystems"
 tools: ["Brush mechanism", "Kinematic stability"]
 cover: "cover.jpg"
-coverAlt: "A person standing behind the solar cell cleaning robot's frame and brush in a workshop."
+coverAlt: "The solar cell cleaning robot's brush mechanism."
 photos:
   - src: "photo-1.jpg"
-    alt: "Overhead view of the cleaning robot rail and electronics on a workshop floor, with a person sitting beside it."
+    alt: "Overhead view of the cleaning robot with the first version of the brush mechanism attached."
   - src: "photo-2.jpg"
-    alt: "Rows of solar panels at a solar farm under a blue sky."
+    alt: "The transporter robot on the floating solar farm."
 videos: []
 experience: "research-assistant-solar-cleaning"
 overview: >-

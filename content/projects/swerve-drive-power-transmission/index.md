@@ -13,10 +13,10 @@ results: []
 spec: "Bevel gears · belts · Z-index encoder homing"
 tools: ["Bevel gears", "Belts", "Incremental encoder"]
 cover: "cover.jpg"
-coverAlt: "The swerve drive module on a bench, showing gears, belt drive, DC gear motors and a red drive wheel."
+coverAlt: "The swerve drive module showing gears, a belt drive and a custom drive wheel."
 photos:
   - src: "photo-1.jpg"
-    alt: "Overhead view of the robot frame with drive motors, wheels and wiring."
+    alt: "Overhead view of the robot's main frame with the swerve drive attached."
 videos: []
 experience: "head-mechanical-abu-robocon"
 achievement: "abu-robocon-2025"
