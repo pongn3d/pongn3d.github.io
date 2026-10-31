@@ -15,13 +15,13 @@ coursework:
   - "Deep Reinforcement Learning"
 skills:
   - name: "Mechanical Design"
-    items: ["SOLIDWORKS", "Fusion 360", "FEA", "3D printing", "Machining", "Assembly"]
+    items: ["CAD/CAE", "SOLIDWORKS", "Fusion 360", "FEA", "Prototyping & manufacturing", "3D printing", "Machining", "Assembly"]
   - name: "Embedded Systems"
-    items: ["STM32", "Serial communication protocols", "PCB design & fabrication"]
+    items: ["STM32", "Serial communication protocols", "PCB design & fabrication", "Power budgeting"]
   - name: "Programming"
     items: ["C/C++", "Embedded C", "Python", "OOP", "Custom library development", "Git/GitHub", "LaTeX"]
   - name: "Robotics & Control"
-    items: ["MATLAB/Simulink", "Simscape Multibody", "Kinematic & dynamic modeling", "PID", "Path planning", "Reinforcement learning"]
+    items: ["ROS 2 (fundamentals)", "MATLAB/Simulink", "Simscape Multibody", "Kinematic & dynamic modeling", "PID", "Path planning", "Reinforcement learning"]
   - name: "Soft Skills"
     items: ["Teamwork", "Leadership", "Technical presentation", "Requirement analysis", "Feasibility study", "Critical & design thinking"]
 languages:
