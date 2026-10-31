@@ -27,6 +27,17 @@ function embedUrl(value: string): string | undefined {
   } catch { return undefined; }
   return undefined;
 }
+// Slots whose file has not been added yet stay hidden and appear on their own once the file exists.
+const photos = project.photos
+  .map((photo) => ({ photo, media: getResponsiveMedia(project.slug, photo.src) }))
+  .filter((entry) => entry.media);
+const videos = project.videos
+  .map((video) => ({
+    video,
+    localVideo: getProcessedVideo(project.slug, video.src),
+    embed: /^https?:\/\//i.test(video.src) ? embedUrl(video.src) : undefined,
+  }))
+  .filter((entry) => entry.localVideo || entry.embed);
 ---
 <section class="project-media" aria-labelledby="project-media-heading">
   <h2 class="eyebrow project-media__heading" id="project-media-heading">{labels.galleryHeading}</h2>
@@ -40,12 +51,12 @@ function embedUrl(value: string): string | undefined {
       sizes="(max-width: 900px) 100vw, 75vw"
     />
   </figure>
-  {(project.photos.length > 0 || project.videos.length > 0) && (
+  {(photos.length > 0 || videos.length > 0) && (
   <div class="project-media__gallery">
-    {project.photos.map((photo) => (
+    {photos.map(({ photo, media }) => (
       <figure class="project-media__figure">
         <MediaImage
-          media={getResponsiveMedia(project.slug, photo.src)}
+          media={media}
           source={photo.src}
           alt={photo.alt}
           placeholderAlt={`${project.title} photo`}
@@ -55,9 +66,7 @@ function embedUrl(value: string): string | undefined {
         <figcaption>{photo.alt.startsWith('[TODO:') ? photo.src : photo.alt}</figcaption>
       </figure>
     ))}
-    {project.videos.map((video) => {
-      const localVideo = getProcessedVideo(project.slug, video.src);
-      const embed = /^https?:\/\//i.test(video.src) ? embedUrl(video.src) : undefined;
+    {videos.map(({ video, localVideo, embed }) => {
       const posterMedia = video.poster ? getResponsiveMedia(project.slug, video.poster) : undefined;
       const poster = posterMedia?.variants.at(-1)?.src ? assetUrl(posterMedia.variants.at(-1)!.src) : undefined;
       const ratio = posterMedia ? `${posterMedia.width} / ${posterMedia.height}` : undefined;
@@ -66,13 +75,8 @@ function embedUrl(value: string): string | undefined {
           {localVideo ? (
             <video src={assetUrl(localVideo)} poster={poster} style={ratio ? `aspect-ratio: ${ratio}` : undefined} controls muted loop playsinline preload="none" aria-label={video.alt}>
             </video>
-          ) : embed ? (
-            <iframe src={embed} title={video.alt} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           ) : (
-            <div class="media-placeholder" role="img" aria-label={`${video.alt}; expected file ${video.src}`}>
-              <span class="media-placeholder__label">{labels.videoPlaceholder}</span>
-              <code>{video.src}</code>
-            </div>
+            <iframe src={embed} title={video.alt} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           )}
           <figcaption>{video.alt.startsWith('[TODO:') ? video.src : video.alt}</figcaption>
         </figure>
