@@ -16,6 +16,7 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const hasResults = project.results.length > 0;
 const page = site.pages.project;
 const projectIndex = allProjects.findIndex((entry) => entry.slug === project.slug);
 const projectNumber = String(projectIndex + 1).padStart(2, '0');
@@ -71,20 +72,18 @@ const socialImage = coverMedia?.variants.at(-1)?.src ?? site.seo.openGraphImage;
         </ul>
       </section>
 
-      <section class="project-detail__section project-detail__results" aria-labelledby="project-results-heading">
-        <p class="eyebrow">04 / {page.resultsHeading}</p>
-        <h2 id="project-results-heading">{page.resultsHeading}</h2>
-        {project.results.length ? (
+      {hasResults && (
+        <section class="project-detail__section project-detail__results" aria-labelledby="project-results-heading">
+          <p class="eyebrow">04 / {page.resultsHeading}</p>
+          <h2 id="project-results-heading">{page.resultsHeading}</h2>
           <ul class="result-grid">
             {project.results.map((result) => <li>{result}</li>)}
           </ul>
-        ) : (
-          <p class="project-detail__no-results">{page.noResultsLabel}</p>
-        )}
-      </section>
+        </section>
+      )}
 
       {!isPlaceholder(project.learning) && <section class="project-detail__section" aria-labelledby="project-learning-heading">
-        <p class="eyebrow">05 / {page.learningHeading}</p>
+        <p class="eyebrow">{hasResults ? '05' : '04'} / {page.learningHeading}</p>
         <h2 id="project-learning-heading">{page.learningHeading}</h2>
         <p class="project-detail__learning">{project.learning}</p>
       </section>}
