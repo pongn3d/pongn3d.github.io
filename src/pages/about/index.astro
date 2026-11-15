@@ -26,8 +26,8 @@ const photo = getResponsiveMedia('about', profile.profilePhoto.src);
       <p class="about-education__degree">{profile.degree}</p>
       <p>{profile.institution} <span aria-hidden="true">·</span> {profile.educationDates}</p>
       <dl class="about-gpa">
-        <div><dt>{page.gpaLabel}</dt><dd>{profile.gpa}</dd></div>
         <div><dt>{page.cumulativeGpaLabel}</dt><dd>{profile.cumulativeGpa}</dd></div>
+        <div><dt>{page.gpaLabel}</dt><dd>{profile.gpa}</dd></div>
       </dl>
       <h3 class="about-subheading">{page.courseworkHeading}</h3>
       <ul class="about-inline-list">{profile.coursework.map((item) => <li>{item}</li>)}</ul>

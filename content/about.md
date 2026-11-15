@@ -6,8 +6,8 @@ profilePhoto:
 degree: "B.Eng. Robotics and Automation Engineering"
 institution: "King Mongkut's University of Technology Thonburi (KMUTT)"
 educationDates: "Aug 2023–expected 2027"
-gpa: "3.66"
-cumulativeGpa: "3.47"
+gpa: "3.66/4.00"
+cumulativeGpa: "3.47/4.00"
 coursework:
   - "Physical AI"
   - "Embedded Systems"

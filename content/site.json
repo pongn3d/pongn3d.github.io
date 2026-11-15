@@ -25,7 +25,7 @@
   },
   "credentials": [
     "KMUTT",
-    "GPA 3.66",
+    "Cumulative GPA 3.47/4.00",
     "IELTS 7.5",
     "TOEIC 930/990",
     "1st Place, NTU Hackathon 2026"
@@ -140,7 +140,7 @@
       "languagesHeading": "Languages",
       "scoresHeading": "Test scores",
       "profilePlaceholder": "[TODO: add profile photo]",
-      "gpaLabel": "GPA",
+      "gpaLabel": "Most recent semester",
       "cumulativeGpaLabel": "Cumulative GPA",
       "ieltsLabel": "IELTS",
       "toeicLabel": "TOEIC",
