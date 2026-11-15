@@ -1,5 +1,5 @@
 ---
-title: "Dynamic Modeling & Simulation of a 2-R Planar Pendulum"
+title: "Dynamic Modeling & Simulation of a 2-R Planar Manipulator"
 slug: "dynamic-modeling-2r-planar-pendulum"
 category: "Control, Simulation & AI"
 tags: ["MATLAB/Simulink", "Simscape", "Kinematics", "Dynamics", "Course Project"]
@@ -8,9 +8,9 @@ endDate: "2025-11"
 role: "[TODO: Add role]"
 context: "Kinematics course"
 featured: false
-summary: "A 2-R planar pendulum model spanning kinematics, dynamics and joint-space control."
+summary: "A 2-R planar manipulator model spanning kinematics, dynamics and joint-space control."
 results: []
-spec: "2-R planar pendulum · MATLAB/Simulink · Simscape validation"
+spec: "2-R planar manipulator · MATLAB/Simulink · Simscape validation"
 tools: ["MATLAB/Simulink", "Simscape Multibody", "DH parameters", "Lagrangian dynamics"]
 cover: "cover.jpg"
 coverAlt: "Slide showing the MATLAB/Simulink simulation setup with the trajectory generator, Simscape Multibody plant and kinematics blocks."
@@ -18,7 +18,7 @@ photos: []
 videos:
   - src: "video-1.mp4"
     poster: "video-1-poster.jpg"
-    alt: "Simulation of the 2-R planar pendulum falling freely under gravity (forward dynamics)."
+    alt: "Simulation of the 2-R planar manipulator falling freely under gravity (forward dynamics)."
   - src: "video-2.mp4"
     poster: "video-2-poster.jpg"
     alt: "Simulation of the 2-R arm following a straight-line path using inverse kinematics and inverse dynamics."
@@ -26,7 +26,7 @@ videos:
     poster: "video-3-poster.jpg"
     alt: "Simulation of the 2-R arm recovering after an external force disturbance."
 overview: >-
-  A Kinematics course project modeling and simulating a two-link planar pendulum, with results validated against Simscape Multibody.
+  A Kinematics course project modeling and simulating a two-link planar manipulator, with results validated against Simscape Multibody.
 whatIDid:
   - "Derived DH parameters, Lagrangian dynamics, forward/inverse kinematics and differential kinematics."
   - "Built a MATLAB/Simulink framework for trajectory generation, inverse dynamics and joint-space control with gravity compensation."

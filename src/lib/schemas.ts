@@ -80,7 +80,7 @@ export const ProjectSchema = z.object({
   startDate: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'Use YYYY-MM'), endDate: z.string().regex(/^(present|\d{4}-(0[1-9]|1[0-2]))$/, 'Use YYYY-MM or present'),
   role: z.string().min(1), context: z.string().min(1), featured: z.boolean(), featuredOrder: z.number().int().positive().optional(), summary: z.string().min(1),
   results: z.array(z.string()), spec: z.string().min(1), tools: z.array(z.string()), cover: safeImageFilename, coverAlt: z.string().min(1), photos: z.array(PhotoSchema).default([]), videos: z.array(VideoSchema).default([]),
-  overview: z.string().min(1), whatIDid: z.array(z.string()).min(1), process: z.array(z.string()).min(1), learning: z.string().min(1),
+  overview: z.string().min(1), whatIDid: z.array(z.string()).min(1), process: z.array(z.string()).default([]), learning: z.string().min(1),
   experience: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(), achievement: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
   relatedProjects: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).default([]),
 });

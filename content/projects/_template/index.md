@@ -36,8 +36,9 @@ videos:
 overview: "[TODO: Problem/goal, using only supplied facts]"
 whatIDid:
   - "[TODO: One factual contribution]"
-process:
-  - "[TODO: One factual process/iteration/analysis note]"
+# process is no longer shown on the site, so it is optional and can be left out.
+# process:
+#   - "[TODO: One factual process/iteration/analysis note]"
 learning: "[TODO: What I learned; keep visible until supplied]"
 ---
 <!-- This template folder is excluded from the generated site and project count. -->
