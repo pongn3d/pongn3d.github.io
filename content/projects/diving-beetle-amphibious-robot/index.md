@@ -29,10 +29,11 @@ relatedProjects: ["cable-driven-differential-mechanism"]
 overview: >-
   Research on bio-inspired locomotion for amphibious robots, focusing on terrestrial walking and passive asymmetric force generation for underwater swimming through morphological computation. The design targets underwater propulsion while retaining load-bearing ability on land.
 whatIDid:
-  - "Designed a cable-driven differential transmission enabling 2-DOF yaw and roll actuation while reducing distal leg inertia."
+  - "Investigated bio-inspired locomotion for amphibious robots, focusing on terrestrial walking and passive asymmetric force generation for underwater swimming through morphological computation."
+  - "Designed a cable-driven differential transmission enabling 2-DOF actuation while reducing distal leg inertia."
   - "Designed and integrated the overall robot architecture, including mechanical structures and electronics enclosures."
   - "Developed and validated waterproof motor modules and connector interfaces for underwater operation."
-  - "Contributed to the research and authored a scientific manuscript submitted to an international robotics conference."
+  - "Designed an experimental setup for swimming-pool testing that keeps the robot easy to access and maintain."
 process:
   - "Investigated terrestrial walking and passive asymmetric force generation for underwater swimming."
   - "Validated the waterproof motor modules and connector interfaces through submerged actuation tests."
