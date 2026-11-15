@@ -26,8 +26,9 @@ const resume = getResume();
           <span>{site.hero.currentlyRole}</span>
         </p>
         {resume && (
-          <p class="hero__actions">
+          <p class="hero__actions resume-download">
             <a class="resume-download__button" href={resume.href} download>{resume.label}<span class="resume-download__size">PDF · {resume.size}</span></a>
+            <a class="text-link" href={resume.href} target="_blank" rel="noopener">Open in a new tab<span aria-hidden="true"> ↗</span></a>
           </p>
         )}
         <a class="hero__scroll-link" href="#selected-work">

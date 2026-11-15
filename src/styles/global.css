@@ -2203,6 +2203,10 @@ a:focus-visible {
   margin: 0;
 }
 
+.hero__actions.resume-download {
+  margin-top: 28px;
+}
+
 .resume-download__button {
   display: inline-flex;
   min-height: 46px;
