@@ -1,6 +1,6 @@
 ---
 title: "Dynamic Modeling & Simulation of a 2-R Planar Manipulator"
-slug: "dynamic-modeling-2r-planar-pendulum"
+slug: "dynamic-modeling-2r-planar-manipulator"
 category: "Control, Simulation & AI"
 tags: ["MATLAB/Simulink", "Simscape", "Kinematics", "Dynamics", "Course Project"]
 startDate: "2025-10"
